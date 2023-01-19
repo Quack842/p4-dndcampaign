@@ -1,1 +1,1 @@
-web: gunicorn p4-dndcampaign.wsgi
+web: gunicorn dndcampaign.wsgi
