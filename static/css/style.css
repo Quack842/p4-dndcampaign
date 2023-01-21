@@ -4,3 +4,29 @@ html {
     font-family: 'Mitr', sans-serif;
     font-weight: 200;
 }
+body {
+    background-color: #484848;
+    color: #d5d5d5;
+}
+/* Nvabar Styles */
+.navbar {
+    font-family: 'Kanit', sans-serif;
+    background-color: #191919;
+}
+.navbar a {
+    color: #d5d5d5 !important;
+}
+.navbar img {
+    width: 200px;
+}
+#navbarSupportedContent {
+    margin: 0 30px;
+}
+/* Landing Page Styles */
+.top-background {
+    background-color: #191919;
+    height: 327px;
+    width: 100%;
+    z-index: -99;
+    position: absolute;
+}
