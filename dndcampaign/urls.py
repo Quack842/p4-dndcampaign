@@ -19,5 +19,10 @@ from booker import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Home.as_view(), name='home')
+    path('', views.Home.as_view(), name='home'),
+    path('upcomingcampaigns/', views.UpcomingCampaigns.as_view(), name='upcoming_campaigns'),
+    path('createcampaigns/', views.CreateCampaign.as_view(), name='create_campaigns'),
+    path('createcharacter/', views.CreateCharacter.as_view(), name='create_character'),
+    path('dashboard/', views.Dashbaord.as_view(), name='dashboard'),
+    path('venues/', views.Venue.as_view(), name='venues'),
 ]

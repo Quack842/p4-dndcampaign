@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Mitr:wght@200;300;400&family=Russo+One&display=swap');
 
-html {
-    font-family: 'Mitr', sans-serif;
-    font-weight: 200;
-}
 body {
     background-color: #484848;
     color: #d5d5d5;
+    font-family: 'Mitr', sans-serif;
+    font-weight: 200;
+}
+h1, h2, h4, h5 {
+    font-family: 'Russo One', sans-serif;
 }
 /* Nvabar Styles */
 .navbar {
     font-family: 'Kanit', sans-serif;
+    font-weight: 400;
     background-color: #191919;
+    position: fixed;
+    width: 100%;
+    padding: 10px 30px;
 }
 .navbar a {
     color: #d5d5d5 !important;
@@ -23,10 +28,86 @@ body {
     margin: 0 30px;
 }
 /* Landing Page Styles */
+.container {
+    padding-top: 15%;
+}
 .top-background {
-    background-color: #191919;
-    height: 327px;
+    background: url('/static/images/banner-image.jpeg') no-repeat center;
+    background-size: cover;
+    height: 400px;
     width: 100%;
     z-index: -99;
     position: absolute;
+}
+.div-about-us {
+    background-color: #b10000cc;
+    width: 70%;
+    height: auto;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin: auto;
+}
+.div-how-it-works {
+    background-color: #b10000dc;
+    width: 58%;
+    height: auto;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+}
+@media screen and (max-width: 875px) {
+    .div-about-us {
+        width: 100%;
+    }
+    .container {
+        padding-top: 30%;
+    }
+    .div-how-it-works {
+        width: 100%;
+    }
+}
+/* Footer */
+.social-networks {
+    text-align: center;
+}
+.social-networks>li {
+    display: inline;
+}
+.social-networks i {
+    font-size: 200%;
+    margin: 1%;
+    padding: 2%;
+}
+footer {
+    background-color: #191919;
+    height: auto;
+    padding: 10px;
+    color: #d5d5d5;
+    box-shadow: inset 0px 20px 7px -13px rgba(0, 0, 0, 0.33);
+}
+footer h4 {
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 10px;
+}
+footer a {
+    text-decoration: none;
+    color: #d5d5d5;
+    transition: .2s all ease-in-out;
+}
+footer a:hover {
+    color: #b10000cc;
+}
+footer i {
+    transition: .3s all ease-in-out;
+}
+footer i:hover {
+    transform: scale(1.1) rotate(30deg);
+}
+footer h5 {
+    text-align: center;
+    margin: 0 auto;
 }

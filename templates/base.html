@@ -17,7 +17,6 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="{% static 'images/d&d-logo-long-2.png' %}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -25,39 +24,78 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">CREATE A CAMPAIGN</a>
+                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">UPCOMING CAMPAIGNS</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">CREATE CAMPAIGNS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">VENUES</a>
+                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">CREATE CHARACTERS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">LOG OUT</a>
+                        </li>
+                        {% else %}
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'venues' %}">VENUES</a>
                         </li>
                     </ul>
                     <ul class="nav justify-content-end" id="rightAccount">
+                        {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             MY ACCOUNT
                           </a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">PROFILE</a></li>
+                            <li><a class="dropdown-item" href="{% url 'dashboard' %}">DASHBOARD</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">LOGOUT</a></li>
                           </ul>
                         </li>
+                        {% else %}
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            MY ACCOUNT
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">SIGN UP</a></li>
+                            <li><a class="dropdown-item" href="#">LOG IN</a></li>
+                          </ul>
+                        </li>
+                        {% endif %}
                       </ul>
                 </div>
             </nav>
         </header>
-        <main>
+        <main> 
+            <div class="top-background"></div> 
             {% block content %}
 
             {% endblock content %}
         </main>
+        <!-- Footer -->
+        <br>
+        <footer>
+            <h4>We're So Social</h4>
+            <ul class="social-networks">
+                <li><a href="https://facebook.com" target="_blank" rel="Facebook Link"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="https://instagram.com" target="_blank" rel="Instagram Link"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com" target="_blank" rel="Twitter Link"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="https://pinterest.com" target="_blank" rel="Pinterest Link"><i class="fa-brands fa-pinterest-p"></i></a></li>
+            </ul>
+            <hr>
+            <h5>&copy; Copyright 2023 by D&D Campaign Party</h5>
+        </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a8fb30ffb7.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>
