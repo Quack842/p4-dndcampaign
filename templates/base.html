@@ -36,9 +36,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'upcoming_campaigns' %}">CREATE CHARACTERS</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">LOG OUT</a>
-                        </li>
                         {% else %}
                         {% endif %}
                         <li class="nav-item">
@@ -49,13 +46,13 @@
                         {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            MY ACCOUNT
+                            {{ user.username }}
                           </a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">PROFILE</a></li>
-                            <li><a class="dropdown-item" href="{% url 'dashboard' %}">DASHBOARD</a></li>
+                            <li><a class="dropdown-item" href="#" style="color: #191919 !important;">PROFILE</a></li>
+                            <li><a class="dropdown-item" href="{% url 'dashboard' %}" style="color: #191919 !important;">DASHBOARD</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">LOGOUT</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}" style="color: #191919 !important;">LOGOUT</a></li>
                           </ul>
                         </li>
                         {% else %}
@@ -64,8 +61,8 @@
                             MY ACCOUNT
                           </a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">SIGN UP</a></li>
-                            <li><a class="dropdown-item" href="#">LOG IN</a></li>
+                            <li><a class="dropdown-item" href="{% url 'signup' %}" style="color: #191919 !important;">SIGN UP</a></li>
+                            <li><a class="dropdown-item" href="{% url 'login' %}" style="color: #191919 !important;">LOG IN</a></li>
                           </ul>
                         </li>
                         {% endif %}

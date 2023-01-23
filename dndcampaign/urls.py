@@ -25,4 +25,7 @@ urlpatterns = [
     path('createcharacter/', views.CreateCharacter.as_view(), name='create_character'),
     path('dashboard/', views.Dashbaord.as_view(), name='dashboard'),
     path('venues/', views.Venue.as_view(), name='venues'),
+    path('signup/', views.register_request, name="signup"),
+    path('login/', views.login_request, name="login"),
+    path('logout/', views.logout_request, name="logout"),
 ]
