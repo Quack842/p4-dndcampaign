@@ -37,6 +37,11 @@ class Venue(generic.TemplateView):
     template_name = "venues.html"
 
 
+class Profile(generic.TemplateView):
+    """ This will be the Venue Page """
+    template_name = "account/profile.html"
+
+
 def register_request(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -63,7 +68,6 @@ def login_request(request):
                 return redirect("home")
             else:
                 messages.error(request, "Invalid username or password")
-                console.log("Invalid username or password")
         else:
             messages.error(request, "Invalid username or password")
     form = AuthenticationForm()

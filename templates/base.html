@@ -49,7 +49,7 @@
                             {{ user.username }}
                           </a>
                           <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" style="color: #191919 !important;">PROFILE</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile' %}" style="color: #191919 !important;">PROFILE</a></li>
                             <li><a class="dropdown-item" href="{% url 'dashboard' %}" style="color: #191919 !important;">DASHBOARD</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'logout' %}" style="color: #191919 !important;">LOGOUT</a></li>

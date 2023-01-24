@@ -17,6 +17,7 @@ h1, h2, h4, h5 {
     position: fixed;
     width: 100%;
     padding: 10px 30px;
+    z-index: 10;
 }
 .navbar a {
     color: #d5d5d5 !important;
@@ -73,7 +74,7 @@ h1, h2, h4, h5 {
 .middle-block {
     background-color: #d5d5d5;
     height: auto;
-    width: 100%;
+    width: 80%;
     margin: auto;
     vertical-align: middle;
     border-radius: 20px;
@@ -81,12 +82,72 @@ h1, h2, h4, h5 {
     padding: 30px;
     text-align: center;
 }
+.middle-block form {
+    width: 80%;
+    text-align: left;
+    align-content: center;
+    margin: auto;
+}
 .input-style {
     width: 70%;
     margin: auto;
 }
-#div_id_username {
-    
+#hint_id_username, #hint_id_password1, #hint_id_password2 {
+    color: #6a0000 !important;
+}
+.start-button {
+    background: #e60000;
+    background-image: linear-gradient(to bottom, #e60000, #030000);
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 15px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    border: 2.5px solid #b59100;
+    margin: 20px 0;
+}
+
+.start-button:hover {
+  background: #f24e4e;
+  background-image: linear-gradient(to bottom, #f24e4e, #424141);
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+@media screen and (max-width: 875px) {
+    .middle-block {
+        width: 100%;
+        padding: 20px;
+    }
+    .middle-block form {
+        width: 100%;
+    }
+}
+/* Profile */
+.middle-block * .card {
+    border: 4px solid rgb(71, 71, 71);
+}
+.gray {
+    background-color: #a2a2a2;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin: auto;
+}
+.gray > label {
+    margin: auto;
+    vertical-align: middle;
+}
+.white {
+    background-color: #d5d5d5;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin: auto;
+}
+.white > label {
+    margin: auto;
+    vertical-align: middle;
 }
 /* Footer */
 .social-networks {
