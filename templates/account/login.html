@@ -12,7 +12,13 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ login_form|crispy }}
-                <button class="btn start-button" type="submit">Register</button>
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+                <br>
+                <button class="btn start-button" type="submit">Log In</button>
             </form>
             <p class="text-center">
                 <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create an account</a>.</p>
