@@ -6,6 +6,17 @@
 
 <!-- Register -->
 <div class="container">
+    {% if messages %}
+    <div class="card border-danger mb-3">
+        <div class="card-body text-danger">
+            <h5 class="card-title" style="font-family: 'Mitr', sans-serif; text-align: center;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            </h5>
+        </div>
+    </div>
+    {% endif %}
     <div class="row">
         <div class="middle-block col-12">
             <h1>REGISTER</h1>

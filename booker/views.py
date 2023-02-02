@@ -3,6 +3,8 @@ from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from phonenumber_field.formfields import PhoneNumberField
+from phonenumber_field.phonenumber import PhoneNumber
 from django.http import HttpResponse
 from django.views import generic, View
 
@@ -42,7 +44,7 @@ class Profile(generic.TemplateView):
     template_name = "account/profile.html"
 
 
-def register_request(request):
+def register_request(request, **extra_fields):
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -64,7 +66,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as {username}.")
+                messages.info(request, f"You are now logged in as: {username}.")
                 return redirect("home")
             else:
                 messages.error(request, "Invalid username or password")
@@ -76,5 +78,5 @@ def login_request(request):
 
 def logout_request(request):
     logout(request)
-    messages.info(request, "You Have Successfully Logged Out")
+    messages.info(request, "You Have Successfully Logged Out!")
     return redirect("home")

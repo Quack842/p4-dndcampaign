@@ -30,7 +30,7 @@ h1, h2, h4, h5 {
 }
 /* Landing Page Styles */
 .container {
-    padding-top: 15%;
+    padding-top: 10%;
 }
 .top-background {
     background: url('/static/images/banner-image.jpeg') no-repeat center;
@@ -60,14 +60,24 @@ h1, h2, h4, h5 {
     margin: auto;
 }
 @media screen and (max-width: 875px) {
+    .container {
+        padding-top: 15%;
+    }
     .div-about-us {
         width: 100%;
     }
-    .container {
-        padding-top: 30%;
-    }
     .div-how-it-works {
         width: 100%;
+    }
+}
+@media screen and (max-width: 631px) {
+    .container {
+        padding-top: 19%;
+    }
+}
+@media screen and (max-width: 433px) {
+    .container {
+        padding-top: 25%;
     }
 }
 /* Register User page */

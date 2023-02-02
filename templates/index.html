@@ -4,9 +4,17 @@
 {% block content %}
 <!-- Home Main Page -->
 <div class="container">
-    <ul class="messageList">
-        <li class="info"></li>
-    </ul>
+    {% if messages %}
+    <div class="card border-danger mb-3">
+        <div class="card-body text-danger">
+            <h5 class="card-title" style="font-family: 'Mitr', sans-serif; text-align: center;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            </h5>
+        </div>
+    </div>
+    {% endif %}
     <!-- About Us section -->
     <div class="div-about-us">
         <h1>ABOUT US</h1>
