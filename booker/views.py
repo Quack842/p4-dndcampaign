@@ -8,6 +8,7 @@ from phonenumber_field.phonenumber import PhoneNumber
 from django.http import HttpResponse
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
 
 
 class Home(generic.TemplateView):
@@ -103,4 +104,4 @@ def profile(request):
         'p_form': p_form
     }
 
-    return render(request, 'users/profile.html', context)
+    return render(request, 'account/profile.html', context)
