@@ -19,50 +19,55 @@
     </div>
     {% endif %}
     <form method="POST" enctype="multipart/form-data">
-    <div class="middle-block row">
+        <div class="middle-block row">
             {% csrf_token %}
-        <!-- Left Side -->
-        <div class="col-md-4">
-            <div class="card">
-                <img src="{{ user.profile.image }}" class="card-img-top" id="img-upload" alt="...">
-                <input type="file" name="upload" accept="image/*">
-                <div class="card-body">
-                    <h5 class="card-title" style="color: brown;">{{ user.username}}</h5>
-                    <p class="card-text">{{ user.email }}</p>
+            {{ p_form|crispy }}
+            <!-- Left Side -->
+            <div class="col-md-4">
+                <div class="card">
+                    {% load cloudinary %}
+                    {% if user.profile.image %}
+                        <img src="{{ user.profile.image.url }}" class="card-img-top" id="img-upload" alt="User uploaded Image">
+                    {% else %}
+                        <img src="{% static 'images/Durpy_Duck.PNG' %}">
+                    {% endif %}
+                    <input type="file" accept="image/*" name="img-upload">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: brown;">{{ user.username}}</h5>
+                        <p class="card-text">{{ user.email }}</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+            <!-- Right Side -->
+            <div class="col-md-8">
+                <h1>PROFILE</h1>
+                <!-- Name -->
+                <div class="gray row">
+                    <label class="col-md-6" for="name"><b>Name</b> </label>
+                    <label class="col-md-6" for="first_name">{{ user.first_name }}&nbsp;{{ user.last_name }}</label>
+                </div>
+                <!-- E-Mail -->
+                <div class="white row">
+                    <label class="col-md-6" for="name"><b>E-Mail</b> </label>
+                    <label class="col-md-6" for="first_name">{{ user.email }}</label>
+                </div>
+                <!-- Phone -->
+                <div class="gray row">
+                    <label class="col-md-6" for="name"><b>Phone</b> </label>
+                    <label class="col-md-6" for="first_name">{{ user.phone_number }}</label>
+                </div>
+                <!-- Region -->
+                <div class="white row">
+                    <label class="col-md-6" for="name"><b>Region</b> </label>
+                    <label class="col-md-6" for="first_name">Ireland</label>
                 </div>
             </div>
-            <br>
-        </div>
-        <!-- Right Side -->
-        <div class="col-md-8">
-            <h1>PROFILE</h1>
-            <!-- Name -->
-            <div class="gray row">
-                <label class="col-md-6" for="name"><b>Name</b> </label>
-                <label class="col-md-6" for="first_name">{{ user.first_name }}&nbsp;{{ user.last_name }}</label>
-            </div>
-            <!-- E-Mail -->
-            <div class="white row">
-                <label class="col-md-6" for="name"><b>E-Mail</b> </label>
-                <label class="col-md-6" for="first_name">{{ user.email }}</label>
-            </div>
-            <!-- Phone -->
-            <div class="gray row">
-                <label class="col-md-6" for="name"><b>Phone</b> </label>
-                <label class="col-md-6" for="first_name">{{ user.phone_number }}</label>
-            </div>
-            <!-- Region -->
-            <div class="white row">
-                <label class="col-md-6" for="name"><b>Region</b> </label>
-                <label class="col-md-6" for="first_name">Ireland</label>
+            <!-- Delete Account Button -->
+            <div>
+                <button class="btn btn-dark my-4" type="submit">Update</button>
             </div>
         </div>
-        <!-- Delete Account Button -->
-        <div>
-            <button class="btn start-button" type="submit">Delete Account</button>
-            <button class="btn btn-dark my-4" type="submit">Update</button>
-        </div>
-    </div>
 </form>
 </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, ProfileUpdateForm
+from .forms import NewUserForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -42,7 +42,7 @@ class Venue(generic.TemplateView):
 
 
 class Profile(generic.TemplateView):
-    """ This will be the Venue Page """
+    """ This will be the Profile Page """
     template_name = "account/profile.html"
 
 
@@ -90,18 +90,20 @@ def profile(request):
     if request.method == 'POST':
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
-                                   instance=request.user.profile)
+                                   instance=request.user.profile.image)
         if p_form.is_valid():
             p_form.save()
             messages.success(request, f'Your account has been updated!')
             # Redirect back to profile page
             return redirect('profile')
+        else:
+            messages.error(request, "Update was Unsuccessful")
 
     else:
-        p_form = ProfileUpdateForm(instance=request.user.profile)
+        p_form = ProfileUpdateForm(instance=request.user.profile.image)
 
     context = {
         'p_form': p_form
     }
 
-    return render(request, 'account/profile.html', context)
+    return render(request, 'account/profile.html', context={"p_form": form})
