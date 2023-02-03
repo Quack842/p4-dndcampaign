@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, ProfileUpdateForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -7,6 +7,7 @@ from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
 from django.http import HttpResponse
 from django.views import generic, View
+from django.contrib.auth.decorators import login_required
 
 
 class Home(generic.TemplateView):
@@ -44,7 +45,7 @@ class Profile(generic.TemplateView):
     template_name = "account/profile.html"
 
 
-def register_request(request, **extra_fields):
+def register_request(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -80,3 +81,26 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You Have Successfully Logged Out!")
     return redirect("home")
+
+
+# Update Profile Here
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST,
+                                   request.FILES,
+                                   instance=request.user.profile)
+        if p_form.is_valid():
+            p_form.save()
+            messages.success(request, f'Your account has been updated!')
+            # Redirect back to profile page
+            return redirect('profile')
+
+    else:
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+
+    context = {
+        'p_form': p_form
+    }
+
+    return render(request, 'users/profile.html', context)

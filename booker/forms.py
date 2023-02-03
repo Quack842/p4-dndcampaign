@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
+from .models import Profile
 
 
 class NewUserForm(UserCreationForm):
@@ -11,7 +12,8 @@ class NewUserForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ("username", "email", "first_name", "last_name", "phone_number", "password1", "password2")
+        fields = ("username", "email", "first_name", "last_name",)
+        ("phone_number", "password1", "password2")
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
@@ -20,3 +22,20 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+# Create a UserUpdateForm to update a username and email
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'email']
+
+
+# Create a ProfileUpdateForm to update image.
+class ProfileUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Profile
+        fields = ['image']
