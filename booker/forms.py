@@ -8,7 +8,6 @@ from .models import Profile
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    phone_number = forms.CharField(max_length=10, required=False)
 
     class Meta:
         model = User

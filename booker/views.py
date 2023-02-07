@@ -92,7 +92,7 @@ def profile(request):
                                    request.FILES,
                                    instance=request.user.profile.image)
         if p_form.is_valid():
-            p_form.save()
+            p_form = p_form.save()
             messages.success(request, f'Your account has been updated!')
             # Redirect back to profile page
             return redirect('profile')
@@ -100,7 +100,7 @@ def profile(request):
             messages.error(request, "Update was Unsuccessful")
 
     else:
-        p_form = ProfileUpdateForm(instance=request.user.profile.image)
+        p_form = ProfileUpdateForm()
 
     context = {
         'p_form': p_form

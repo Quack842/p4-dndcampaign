@@ -18,20 +18,20 @@
         </div>
     </div>
     {% endif %}
-    <form method="POST" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data" id="profile_form">
+        {% csrf_token %}
+        {{ p_form|crispy }}
         <div class="middle-block row">
-            {% csrf_token %}
-            {{ p_form|crispy }}
             <!-- Left Side -->
             <div class="col-md-4">
                 <div class="card">
-                    {% load cloudinary %}
                     {% if user.profile.image %}
-                        <img src="{{ user.profile.image.url }}" class="card-img-top" id="img-upload" alt="User uploaded Image">
+                    {% load cloudinary %}
+                        <img src="{{ user.profile.image.url }}" class="card-img-top" id="id_image" alt="User uploaded Image">
                     {% else %}
                         <img src="{% static 'images/Durpy_Duck.PNG' %}">
                     {% endif %}
-                    <input type="file" accept="image/*" name="img-upload">
+                    <input type="file" accept="image/*" name="image" id="id_image">
                     <div class="card-body">
                         <h5 class="card-title" style="color: brown;">{{ user.username}}</h5>
                         <p class="card-text">{{ user.email }}</p>
@@ -55,7 +55,11 @@
                 <!-- Phone -->
                 <div class="gray row">
                     <label class="col-md-6" for="name"><b>Phone</b> </label>
-                    <label class="col-md-6" for="first_name">{{ user.phone_number }}</label>
+                    {% if user.phone_number %}
+                        <label class="col-md-6" for="first_name">{{ user.phone_number }}</label>
+                    {% else %}
+                        <label class="col-md-6" for="first_name">NB</label>
+                    {% endif %}
                 </div>
                 <!-- Region -->
                 <div class="white row">
