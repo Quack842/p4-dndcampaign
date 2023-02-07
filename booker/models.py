@@ -6,7 +6,7 @@ from cloudinary.models import CloudinaryField
 class Profile(models.Model):
     # Delete profile when user is deleted
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='profile_pic', default='default.jpg')
+    image = models.ImageField(upload_to='profile_pics', default='default.jpg')
 
     # show how we want it to be displayed
     def __str__(self):
