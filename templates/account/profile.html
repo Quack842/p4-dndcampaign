@@ -4,7 +4,6 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-
 <!-- Profile -->
 <div class="container">
     {% if messages %}
@@ -18,16 +17,16 @@
         </div>
     </div>
     {% endif %}
-    <form method="POST" enctype="multipart/form-data" id="profile_form">
+    <form method="GET" enctype="multipart/form-data" id="profile_form">
         {% csrf_token %}
         {{ p_form|crispy }}
         <div class="middle-block row">
             <!-- Left Side -->
             <div class="col-md-4">
                 <div class="card">
-                    {% if user.profile.image %}
-                    {% load cloudinary %}
+                    {% if user.profile.image.url %}
                         <img src="{{ user.profile.image.url }}" class="card-img-top" id="id_image" alt="User uploaded Image">
+                        {% load cloudinary %}
                     {% else %}
                         <img src="{% static 'images/Durpy_Duck.PNG' %}">
                     {% endif %}

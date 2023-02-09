@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, ProfileUpdateForm, UserUpdateForm
+from .forms import NewUserForm, ProfileUpdateForm, UserUpdateForm, RegionForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -46,6 +46,17 @@ class Profile(generic.TemplateView):
     template_name = "account/profile.html"
 
 
+def venue_view(request):
+    context = {}
+    form = RegionForm(request.GET)
+    context['form'] = form
+    if form.is_valid():
+        messages.success(request, "Success")
+        return redirect("venues")
+    messages.error(request, "Error")
+    return render(request, "venues.html", context)
+
+
 def register_request(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -87,8 +98,8 @@ def logout_request(request):
 # Update Profile Here
 @login_required
 def profile(request):
-    if request.method == 'POST':
-        p_form = ProfileUpdateForm(request.POST,
+    if request.method == 'GET':
+        p_form = ProfileUpdateForm(request.GET,
                                    request.FILES,
                                    instance=request.user.profile.image)
         if p_form.is_valid():
