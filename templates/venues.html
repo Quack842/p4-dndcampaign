@@ -5,10 +5,9 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="container">
-    <form method="GET" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type = "submit" value = "Submit">
+        {{ region_form_europe | crispy }}
     </form>
 </div>
 {% endblock %}
