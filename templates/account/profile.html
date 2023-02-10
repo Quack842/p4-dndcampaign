@@ -17,9 +17,9 @@
         </div>
     </div>
     {% endif %}
-    <form method="GET" enctype="multipart/form-data" id="profile_form">
+    <form method="GET" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ p_form|crispy }}
+        {{ backend_form }}
         <div class="middle-block row">
             <!-- Left Side -->
             <div class="col-md-4">
@@ -68,7 +68,7 @@
             </div>
             <!-- Delete Account Button -->
             <div>
-                <button class="btn btn-dark my-4" type="submit">Update</button>
+                <input class="btn btn-dark my-4" type="submit" value="Upload">
             </div>
         </div>
 </form>

@@ -31,12 +31,11 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">CREATE CAMPAIGNS</a>
+                            <a class="nav-link" href="{% url 'create_campaign' %}">CREATE CAMPAIGNS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">CREATE CHARACTERS</a>
+                            <a class="nav-link" href="{% url 'create_character' %}">CREATE CHARACTER</a>
                         </li>
-                        {% else %}
                         {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'venues' %}">VENUES</a>

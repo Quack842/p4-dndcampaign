@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, ProfileUpdateForm, UserUpdateForm
+from .forms import NewUserForm, UserUpdateForm, PhotoForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
+from cloudinary.forms import cl_init_js_callbacks 
 
 
 class Home(generic.TemplateView):
@@ -23,7 +24,7 @@ class UpcomingCampaigns(generic.TemplateView):
 
 class CreateCampaign(generic.TemplateView):
     """ This will be the Create Campaigns Page """
-    template_name = "create_campaigns.html"
+    template_name = "create_campaign.html"
 
 
 class CreateCharacter(generic.TemplateView):
@@ -65,9 +66,11 @@ def register_request(request):
             login(request, user)
             messages.success(request, "Registration Was Successful...")
             return redirect("home")
-        messages.error(request, "Unsuccessful Registration. Invalid Information.")
+        messages.error(
+            request, "Unsuccessful Registration. Invalid Information.")
     form = NewUserForm()
-    return render(request=request, template_name="account/signup.html", context={"register_form": form})
+    return render(request=request, template_name="account/signup.html",
+                  context={"register_form": form})
 
 
 def login_request(request):
@@ -79,14 +82,15 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, f"You are now logged in as: {username}.")
+                messages.info(request, f"You are now logged in as: {username}")
                 return redirect("home")
             else:
                 messages.error(request, "Invalid username or password")
         else:
             messages.error(request, "Invalid username or password")
     form = AuthenticationForm()
-    return render(request=request, template_name="account/login.html", context={"login_form": form})
+    return render(request=request, template_name="account/login.html",
+                  context={"login_form": form})
 
 
 def logout_request(request):
@@ -97,24 +101,12 @@ def logout_request(request):
 
 # Update Profile Here
 @login_required
-def profile(request):
-    if request.method == 'GET':
-        p_form = ProfileUpdateForm(request.GET,
-                                   request.FILES,
-                                   instance=request.user.profile.image)
-        if p_form.is_valid():
-            p_form = p_form.save()
-            messages.success(request, f'Your account has been updated!')
-            # Redirect back to profile page
-            return redirect('profile')
-        else:
-            messages.error(request, "Update was Unsuccessful")
+def upload(request):
+    context = dict(backend_form=PhotoForm())
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        context['posted'] = form.instance
+        if form.is_valid():
+            form.save()
 
-    else:
-        p_form = ProfileUpdateForm()
-
-    context = {
-        'p_form': p_form
-    }
-
-    return render(request, 'account/profile.html', context={"p_form": form})
+    return render(request, 'account/profile.html', context)
