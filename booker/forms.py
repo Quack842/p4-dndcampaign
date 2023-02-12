@@ -37,7 +37,7 @@ class BookForm(forms.ModelForm):
         )
 
 
-class CampaignForm(forms.ModelForm):
+class CreateCampaignForm(forms.Form):
 
     class Meta:
         model = Campaign
@@ -46,8 +46,14 @@ class CampaignForm(forms.ModelForm):
             'campaign_name',
             'dungeon_master',
             'total_players',
-            'discription',
+            'description',
         )
+
+    def save(self, commit=True):
+        user = super(CreateCampaignForm, self).save(commit=False)
+        if commit:
+            user.save()
+        return user
 
 
 # Create a UserUpdateForm to update a username and email

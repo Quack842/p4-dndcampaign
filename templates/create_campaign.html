@@ -4,7 +4,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<!-- Register -->
+<!-- Create Campaign -->
 <div class="container">
     {% if messages %}
     <div class="card border-danger mb-3">
@@ -19,15 +19,12 @@
     {% endif %}
     <div class="row">
         <div class="middle-block col-12">
-            <h1>REGISTER</h1>
-            <form method="POST">
+            <h1>Create Campaign</h1>
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ register_form|crispy }}
-                <button class="btn start-button" type="submit">Register</button>
+                {{ create_form }}
+                <button class="btn start-button" type="submit">Create</button>
             </form>
-            <p class="text-center">
-                If you already have an account, <a href="{% url 'login' %}">login</a> instead.
-            </p>
         </div>
     </div>
 </div>

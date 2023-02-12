@@ -48,8 +48,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     "crispy_bootstrap5",
     'cloudinary',
-    'booker',
     'phonenumber_field',
+    'booker',
 ]
 
 MIDDLEWARE = [

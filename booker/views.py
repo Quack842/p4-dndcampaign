@@ -1,15 +1,17 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, UserUpdateForm, PhotoForm
+from .forms import NewUserForm, UserUpdateForm, PhotoForm, CreateCampaignForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from django.db import models
 from django.contrib.auth.forms import AuthenticationForm
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
-from django.http import HttpResponse
+# from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
-from cloudinary.forms import cl_init_js_callbacks 
+from cloudinary.forms import cl_init_js_callbacks
 
 
 class Home(generic.TemplateView):
@@ -47,18 +49,26 @@ class Profile(generic.TemplateView):
     template_name = "account/profile.html"
 
 
-def venue_view(request):
-    context = {}
-    form = RegionForm(request.GET)
-    context['form'] = form
-    if form.is_valid():
-        messages.success(request, "Success")
-        return redirect("venues")
-    messages.error(request, "Error")
-    return render(request, "venues.html", context)
+def create_campaign(request):
+    """
+    To create the create_campaign form
+    """
+    if request.method == "POST":
+        form = CreateCampaignForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, "Success")
+            return redirect("createcampaign")
+        messages.error(request, "Error")
+    form = CreateCampaignForm()
+    return render(request=request, template_name="create_campaign.html",
+                  context={"create_form": form})
 
 
 def register_request(request):
+    """
+    To create the Register Form
+    """
     if request.method == "POST":
         form = NewUserForm(request.POST)
         if form.is_valid():
@@ -74,6 +84,9 @@ def register_request(request):
 
 
 def login_request(request):
+    """
+    To Log into account form
+    """
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -94,6 +107,9 @@ def login_request(request):
 
 
 def logout_request(request):
+    """
+    To Log out of the account form
+    """
     logout(request)
     messages.info(request, "You Have Successfully Logged Out!")
     return redirect("home")

@@ -20,7 +20,7 @@ class Campaign(models.Model):
         User, on_delete=models.CASCADE, primary_key=True)
     campaign_name = models.CharField(max_length=150, unique=True)
     dungeon_master = models.CharField(max_length=150)
-    total_players = models.IntegerField(max_length=1)
+    total_players = models.IntegerField()
     discription = models.TextField(max_length=300, blank=True)
 
 
@@ -87,7 +87,7 @@ class BookVenue(models.Model):
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
     booking_date = models.DateField(auto_now=False)
     booking_comments = models.TextField(max_length=200, blank=True)
-    total_players = models.IntegerField(max_length=1)
+    total_players = models.IntegerField()
 
     class Meta:
         ordering = ['-booking_date']

@@ -4,6 +4,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
+
 <!-- Register -->
 <div class="container">
     {% if messages %}
@@ -22,7 +23,7 @@
             <h1>REGISTER</h1>
             <form method="POST">
                 {% csrf_token %}
-                {{ register_form|crispy }}
+                {{ register_form | crispy }}
                 <button class="btn start-button" type="submit">Register</button>
             </form>
             <p class="text-center">
