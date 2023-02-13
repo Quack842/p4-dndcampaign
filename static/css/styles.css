@@ -159,6 +159,22 @@ h1, h2, h4, h5 {
     margin: auto;
     vertical-align: middle;
 }
+/* Create Campaign */
+.campaign-form {
+    margin: auto;
+    text-align: center !important;
+}
+.campaign-styling-left {
+    margin: auto;
+    display: block;
+    margin-right: 50px;
+}
+.campaign-styling-int {
+    width: 70px;
+    display: block;
+    text-align: center;
+    margin: auto;
+}
 /* Footer */
 .social-networks {
     text-align: center;

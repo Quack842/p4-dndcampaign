@@ -17,7 +17,8 @@
         </div>
     </div>
     {% endif %}
-    <form method="GET" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="middle-block row">
             <!-- Left Side -->
             <div class="col-md-4">

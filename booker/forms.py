@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, NumberInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
@@ -37,7 +37,7 @@ class BookForm(forms.ModelForm):
         )
 
 
-class CreateCampaignForm(forms.Form):
+class CreateCampaignForm(forms.ModelForm):
 
     class Meta:
         model = Campaign
@@ -46,10 +46,30 @@ class CreateCampaignForm(forms.Form):
             'campaign_name',
             'dungeon_master',
             'total_players',
-            'description',
+            'discription',
         )
 
-    def save(self, commit=True):
+        widgets = {
+            'campaign_name': TextInput(attrs={
+                'class': "form-control campaign-styling-left",
+                'placeholder': 'Campaign Name',
+                }),
+            'dungeon_master': TextInput(attrs={
+                'class': "form-control campaign-styling-left",
+                'placeholder': 'Dungeon Master',
+                }),
+            'total_players': NumberInput(attrs={
+                'class': "form-control campaign-styling-int",
+                'max': 8.0,
+                'min': 3.0,
+                'text-align': 'center'
+                }),
+            'discription': TextInput(attrs={
+                'class': "form-control input-group-prepend",
+                }),
+        }
+
+    def save(self, commit=False):
         user = super(CreateCampaignForm, self).save(commit=False)
         if commit:
             user.save()

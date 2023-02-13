@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from djchoices import DjangoChoices, ChoiceItem
 from django.contrib.postgres.fields import ArrayField
+from django.core.validators import ValidationError
 
 
 class Profile(models.Model):
@@ -18,10 +19,16 @@ class Profile(models.Model):
 class Campaign(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    campaign_name = models.CharField(max_length=150, unique=True)
-    dungeon_master = models.CharField(max_length=150)
+    campaign_name = models.CharField(max_length=150, unique=True,
+                                     verbose_name="")
+    dungeon_master = models.CharField(max_length=150,
+                                      verbose_name="")
     total_players = models.IntegerField()
     discription = models.TextField(max_length=300, blank=True)
+
+    # show how we want it to be displayed
+    def __str__(self):
+        return str(self.user)
 
 
 class BookVenue(models.Model):

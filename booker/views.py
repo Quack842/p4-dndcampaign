@@ -12,6 +12,8 @@ from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from cloudinary.forms import cl_init_js_callbacks
+from django.views.generic.edit import FormView
+from django.contrib.auth.models import User
 
 
 class Home(generic.TemplateView):
@@ -24,9 +26,18 @@ class UpcomingCampaigns(generic.TemplateView):
     template_name = "upcoming_campaigns.html"
 
 
-class CreateCampaign(generic.TemplateView):
+class CreateCampaign(FormView):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
+    form_class = CreateCampaignForm
+    success_url = '/dashboard'
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = User.objects.get(id=self.request.user.id)
+            form.save()
+            return super().form_valid(form)
 
 
 class CreateCharacter(generic.TemplateView):
@@ -47,22 +58,6 @@ class Venue(generic.TemplateView):
 class Profile(generic.TemplateView):
     """ This will be the Profile Page """
     template_name = "account/profile.html"
-
-
-def create_campaign(request):
-    """
-    To create the create_campaign form
-    """
-    if request.method == "POST":
-        form = CreateCampaignForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            messages.success(request, "Success")
-            return redirect("createcampaign")
-        messages.error(request, "Error")
-    form = CreateCampaignForm()
-    return render(request=request, template_name="create_campaign.html",
-                  context={"create_form": form})
 
 
 def register_request(request):
