@@ -3,11 +3,11 @@ from .forms import NewUserForm, UserUpdateForm, PhotoForm, CreateCampaignForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.db import models
+from .models import Campaign
 from django.contrib.auth.forms import AuthenticationForm
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
-# from django.http import HttpResponse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
@@ -31,6 +31,7 @@ class CreateCampaign(FormView):
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
     success_url = '/dashboard'
+    campaign_loop = Campaign.objects.all()
 
     def form_valid(self, form):
         if form.is_valid():
@@ -38,6 +39,8 @@ class CreateCampaign(FormView):
             form.user = User.objects.get(id=self.request.user.id)
             form.save()
             return super().form_valid(form)
+
+        return HttpResponse(template.render(context, request))
 
 
 class CreateCharacter(generic.TemplateView):

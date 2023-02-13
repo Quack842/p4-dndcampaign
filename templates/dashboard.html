@@ -1,2 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!-- Create Campaign -->
+<div class="container">
+    {% if messages %}
+    <div class="card border-danger mb-3">
+        <div class="card-body text-danger">
+            <h5 class="card-title" style="font-family: 'Mitr', sans-serif; text-align: center;">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+            </h5>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for campaign_loop in campaign_loop_list %}
+        <div class="middle-block col-12">
+            <h1>{{ user.campaign.campaign_name }}</h1>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
