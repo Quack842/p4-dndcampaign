@@ -17,12 +17,25 @@
         </div>
     </div>
     {% endif %}
-    <div class="row">
-        {% for campaign_loop in campaign_loop_list %}
-        <div class="middle-block col-12">
-            <h1>{{ user.campaign.campaign_name }}</h1>
+        <div class="card" style="color: #484848; margin: 50px;">
+            <div class="card-header">
+                <div class="card-title" style="text-align: center;">
+                    <h1>{{ user.campaign.campaign_name }}</h1>
+                </div>
+            </div>
+            <div class="card-body row">
+                <div class="col-md-7">
+                    <h2>Dungeon Master</h2>
+                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.dungeon_master }}</h4>
+
+                    <h2>Total Players</h2>
+                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.total_players }}</h4>  
+                </div>
+                <div class="col-md-5">
+                    <h2>Description</h2>
+                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.discription }}</h4>
+                </div>
+            </div>
         </div>
-        {% endfor %}
-    </div>
 </div>
 {% endblock %}

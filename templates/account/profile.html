@@ -19,27 +19,24 @@
     {% endif %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="middle-block row">
-            <!-- Left Side -->
-            <div class="col-md-4">
-                <div class="card">
-                    {% if user.profile.image %}
-                        {% load cloudinary %}
-                        <img src="{{ user.profile.image.url }}" class="card-img-top" id="id_image" alt="User uploaded Image">
-                    {% else %}
-                        <img src="{% static 'images/Durpy_Duck.PNG' %}">
-                    {% endif %}
-                    <input type="file" accept="image/*" name="image" id="id_image">
-                    <div class="card-body">
-                        <h5 class="card-title" style="color: brown;">{{ user.username}}</h5>
-                        <p class="card-text">{{ user.email }}</p>
-                    </div>
-                </div>
-                <br>
+        <div class="card" style="color: #484848; margin: 50px; text-align: center;">
+            <div class="card-header">
+                <h1 class="card-title">PROFILE</h1>
             </div>
+            <div class="card-body row">
+            <!-- Left Side -->
+                <div class="col-md-4" style="text-align: center;">
+                    <div>
+                        <img class="img-fluid" src="{% static 'images/Durpy_Duck.PNG' %}" >
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: brown;">{{ user.username}}</h5>
+                            <p class="card-text">{{ user.email }}</p>
+                        </div>
+                    </div>
+                    <br>
+                </div>
             <!-- Right Side -->
-            <div class="col-md-8">
-                <h1>PROFILE</h1>
+            <div class="col-md-8" style="margin: auto;">
                 <!-- Name -->
                 <div class="gray row">
                     <label class="col-md-6" for="name"><b>Name</b> </label>
@@ -59,17 +56,9 @@
                         <label class="col-md-6" for="first_name">NB</label>
                     {% endif %}
                 </div>
-                <!-- Region -->
-                <div class="white row">
-                    <label class="col-md-6" for="name"><b>Region</b> </label>
-                    <label class="col-md-6" for="first_name">Ireland</label>
-                </div>
-            </div>
-            <!-- Delete Account Button -->
-            <div>
-                <input class="btn btn-dark my-4" type="submit" value="Upload">
             </div>
         </div>
+    </div>
 </form>
 </div>
 {% endblock %}

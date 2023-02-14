@@ -27,11 +27,11 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'home' %}">HOME</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">UPCOMING CAMPAIGNS</a>
+                            <a class="nav-link" href="{% url 'upcoming_campaigns' %}">UPCOMING EVENTS</a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'create_campaign' %}">CREATE CAMPAIGNS</a>
+                            <a class="nav-link" href="{% url 'create_campaign' %}">CREATE CAMPAIGN</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'create_character' %}">CREATE CHARACTER</a>

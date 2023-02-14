@@ -36,5 +36,4 @@ urlpatterns = [
     path('createcampaign/', views.CreateCampaign.as_view(),
          name="createcampaign"),
     path('profile/', views.Profile.as_view(), name="profile"),
-    path('profile/', views.upload, name="profile"),
 ]

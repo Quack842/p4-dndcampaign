@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
-from .models import Profile, BookVenue, Campaign
+from .models import BookVenue, Campaign
 
 
 class NewUserForm(UserCreationForm):
@@ -74,20 +74,3 @@ class CreateCampaignForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-
-
-# Create a UserUpdateForm to update a username and email
-class UserUpdateForm(forms.ModelForm):
-    email = forms.EmailField()
-
-    class Meta:
-        model = User
-        fields = ['username', 'email']
-
-
-# Create a ProfileUpdateForm to update image.
-class PhotoForm(ModelForm):
-
-    class Meta:
-        model = Profile
-        fields = ['image']

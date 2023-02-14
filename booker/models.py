@@ -6,16 +6,6 @@ from django.contrib.postgres.fields import ArrayField
 from django.core.validators import ValidationError
 
 
-class Profile(models.Model):
-    # Delete profile when user is deleted
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = CloudinaryField('profile_pics')
-
-    # show how we want it to be displayed
-    def __str__(self):
-        return str(self.user)
-
-
 class Campaign(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)

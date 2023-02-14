@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, UserUpdateForm, PhotoForm, CreateCampaignForm
+from .forms import NewUserForm, CreateCampaignForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.db import models
@@ -35,9 +35,11 @@ class CreateCampaign(FormView):
 
     def form_valid(self, form):
         if form.is_valid():
+            campaign_name = form.cleaned_data.get('campaign_name')
             form = form.save(commit=False)
             form.user = User.objects.get(id=self.request.user.id)
             form.save()
+            messages.success(self.request, f"{campaign_name} was successfully Registered!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(context, request))
@@ -113,14 +115,3 @@ def logout_request(request):
     return redirect("home")
 
 
-# Update Profile Here
-@login_required
-def upload(request):
-    context = dict(backend_form=PhotoForm())
-    if request.method == 'POST':
-        form = PhotoForm(request.POST, request.FILES)
-        context['posted'] = form.instance
-        if form.is_valid():
-            form.save()
-
-    return render(request, 'account/profile.html', context)
