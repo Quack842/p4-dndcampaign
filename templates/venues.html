@@ -5,10 +5,572 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="container">
-    <form method="post">
-        {% csrf_token %}
-        {{ create_form.as_p }}
-        <button type="submit">Create Campaign</button>
-      </form>
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <h1>Regions</h1>
+      </div>
+    </div>
+    <div class="row">
+      <!-- If View on a Laptop/Big screen Users will see the map -->
+      <div class="col-md-5 map-venue">
+        <!-- Img Map -->
+        <img class="card-image img-fluid" src="{% static 'images/regions.png' %}" alt="Regions" usemap="#regionmap" width="500" height="auto">
+        <!-- are mapping on the image -->
+        <map name="regionmap">
+          <area shape="poly" title="Austria" coords="267,249,277,256,301,255,323,265,352,257,357,243,359,223,343,219,310,231,312,241" href="#" alt="Austria" onclick="ausShow()">
+          <area shape="poly" title="Germany" coords="239,243,250,221,229,210,223,180,223,165,238,153,239,130,256,134,263,122,258,102,284,119,306,114,327,133,335,177,304,193,323,222,309,238,275,244" href="#" alt="Germany" onclick="return germShow()">
+          <area shape="poly" title="France" coords="223,209,177,180,168,194,153,208,135,211,124,208,125,226,88,230,122,253,128,315,185,334,198,315,224,319,241,307,224,268,239,243,246,220" href="#" alt="France" onclick="return franShow()">
+          <area shape="poly" title="Italy" coords="243,304,234,278,296,257,319,267,318,276,305,283,303,304,340,341,351,339,351,348,381,369,360,368,363,384,341,420,312,403,344,396,346,368,289,329,277,306,261,298" href="#" alt="Italy" onclick="italyShow()">
+          <area shape="poly" title="Netherlands" coords="219,179,198,165,209,146,215,152,215,137,236,137,231,158" href="#" alt="" onclick="nethShow()">
+          <area shape="poly" title="UK" coords="70,196,162,177,156,168,169,153,158,141,118,89,97,108,108,119,108,169" href="#" alt="UK" onclick="ukShow()">
+          <area shape="poly" title="Spain" coords="85,334,105,317,43,314,30,322,39,338,66,345,53,411,69,427,122,419,147,392,143,379,159,356,185,344" href="#" alt="Spain" onclick="spainShow()">
+          <area shape="poly" title="Ireland" coords="56,156,60,122,40,122,30,115,7,118,5,133,12,149,2,158,14,170" href="#" alt="Ireland" onclick="ireShow()">
+        </map>
+      </div>
+      <!-- Display when user click on Region -->
+      <div class="col-md-7 map-venue">
+        <!-- Austria Details -->
+        <div id="austria" style="display: none;">
+          <h1>Austria</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Kasematten</td>
+                <td><a href="mailto:grazer@spielstaetten.at">grazer@spielstaetten.at</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Bilderbox</td>
+                <td><a href="mailto:bilderbox@gmx.at">bilderbox@gmx.at</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Germany Details -->
+        <div id="germany" style="display: none;">
+          <h1>Germany</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Le Royal - The Event hall</td>
+                <td><a href="mailto:A.Ahmadi@Le-Royal.de">A.Ahmadi@Le-Royal.de</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Zapp Comics Games</td>
+                <td><a href="mailto:order@zappgames.com">order@zappgames.com</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Comic Room</td>
+                <td><a href="mailto:onlineshop@comicroom-hamburg.de">onlineshop@comicroom-hamburg.de</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- France Details -->
+        <div id="france" style="display: none;">
+          <h1>France</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Len’s PC Gamer</td>
+                <td><a href="mailto:Lens.pc.gamer@gmail.fr">Lens.pc.gamer@gmail.fr</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>G.E.E.K.S</td>
+                <td><a href="mailto:docteurgeek.rouen@gmail.com">docteurgeek.rouen@gmail.com</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Librairie Comptoir de Reve</td>
+                <td><a href="mailto:Librairie@comicroom-hamburg.de">Librairie@comicroom-hamburg.de</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Italy Details -->
+        <div id="italy" style="display: none;">
+          <h1>Italy</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Star Comic Store Napoli</td>
+                <td><a href="mailto:StarComic@gmail.it">StarComic@gmail.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Comix Green</td>
+                <td><a href="mailto:inkomics@libero.it">inkomics@libero.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Infinity Comics</td>
+                <td><a href="mailto:infinitybeyond@comicroom.it">infinitybeyond@comicroom.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Games & Geeks</td>
+                <td><a href="mailto:infinitybeyond@comicroom.it">gamesandgeeks@comicroom.it</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- UK Details -->
+        <div id="uk" style="display: none;">
+          <h1>United Kingdom (UK)</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Geek Retreat Blackburn</td>
+                <td><a href="mailto:Blackburn@gmail.uk">Blackburn@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>4th Planet Games</td>
+                <td><a href="mailto:Planetgames@libero.uk">Planetgames@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Mutant Dice Games</td>
+                <td><a href="mailto:MutantDiceGames@comicroom.uk">MutantDiceGames@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Lancaster Board and Sword</td>
+                <td><a href="mailto:Lancaster@comicroom.uk">Lancaster@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Spain Details -->
+        <div id="spain" style="display: none;">
+          <h1>Spain</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Gremio De Dragones</td>
+                <td><a href="mailto:Dragones@gmail.sp">Dragones@gmail.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Pulsar Store</td>
+                <td><a href="mailto:Pulsar@libero.sp">Pulsar@libero.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Dungeon Marvels</td>
+                <td><a href="mailto:Dungeon@comicroom.sp">Dungeon@comicroom.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Joc & Rol</td>
+                <td><a href="mailto:JocndRol@comicroom.sp">JocndRol@comicroom.sp</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Netherlands Details -->
+        <div id="netherlands" style="display: none;">
+          <h1>Netherlands</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Purple Dragon</td>
+                <td><a href="mailto:PurpleDragon@gmail.uk">PurpleDragon@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>The Fantasy Realm</td>
+                <td><a href="mailto:Thefantasyrealm@libero.uk">Thefantasyrealm@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Arnhem</td>
+                <td><a href="mailto:Arnhem@comicroom.uk">Arnhem@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Warhammer</td>
+                <td><a href="mailto:Warhammer@comicroom.uk">Warhammer@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Irelands Details -->
+        <div id="ireland" style="display: none;">
+          <h1>Ireland</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Tyrrelstown House</td>
+                <td><a href="mailto:TyrrelstownHouse@gmail.uk">TyrrelstownHouse@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Gloster House</td>
+                <td><a href="mailto:GlosterHouse@libero.uk">GlosterHouse@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Reroll Games</td>
+                <td><a href="mailto:rerollgames@comicroom.uk">rerollgames@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>The Gathering</td>
+                <td><a href="mailto:Thegathering@comicroom.uk">Thegathering@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- When user view on smaller device -->
+      <div class="col-md-5 map-venue-device">
+        <select class="form-select" aria-label="Default select example" id="selectR">
+          <option selected>Select a Region</option>
+          <option value="1" id="austria-s">Austria</option>
+          <option value="2" id="germany-s">Germany</option>
+          <option value="3" id="france-s">France</option>
+          <option value="4" id="italy-s">Italy</option>
+          <option value="5" id="uk-s">UK</option>
+          <option value="6" id="spain-s">Spain</option>
+          <option value="7" id="netherlands-s">Netherlands</option>
+          <option value="8" id="ireland-s">Ireland</option>
+        </select>
+      </div>
+      <br>
+      <hr>
+      <!-- Display when select Region -->
+      <div class="col-md-7 map-venue-device">
+        <!-- Austria Details -->
+        <div id="austria-d" style="display: none; overflow: scroll;" >
+          <h1>Austria</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Kasematten</td>
+                <td><a href="mailto:grazer@spielstaetten.at">grazer@spielstaetten.at</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Bilderbox</td>
+                <td><a href="mailto:bilderbox@gmx.at">bilderbox@gmx.at</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Germany Details -->
+        <div id="germany-d" style="display: none; overflow: scroll;">
+          <h1>Germany</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Le Royal - The Event hall</td>
+                <td><a href="mailto:A.Ahmadi@Le-Royal.de">A.Ahmadi@Le-Royal.de</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Zapp Comics Games</td>
+                <td><a href="mailto:order@zappgames.com">order@zappgames.com</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Comic Room</td>
+                <td><a href="mailto:onlineshop@comicroom-hamburg.de">onlineshop@comicroom-hamburg.de</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- France Details -->
+        <div id="france-d" style="display: none; overflow: scroll;">
+          <h1>France</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Len’s PC Gamer</td>
+                <td><a href="mailto:Lens.pc.gamer@gmail.fr">Lens.pc.gamer@gmail.fr</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>G.E.E.K.S</td>
+                <td><a href="mailto:docteurgeek.rouen@gmail.com">docteurgeek.rouen@gmail.com</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Librairie Comptoir de Reve</td>
+                <td><a href="mailto:Librairie@comicroom-hamburg.de">Librairie@comicroom-hamburg.de</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Italy Details -->
+        <div id="italy-d" style="display: none; overflow: scroll;">
+          <h1>Italy</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Star Comic Store Napoli</td>
+                <td><a href="mailto:StarComic@gmail.it">StarComic@gmail.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Comix Green</td>
+                <td><a href="mailto:inkomics@libero.it">inkomics@libero.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Infinity Comics</td>
+                <td><a href="mailto:infinitybeyond@comicroom.it">infinitybeyond@comicroom.it</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Games & Geeks</td>
+                <td><a href="mailto:infinitybeyond@comicroom.it">gamesandgeeks@comicroom.it</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- UK Details -->
+        <div id="uk-d" style="display: none; overflow: scroll;">
+          <h1>United Kingdom (UK)</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Geek Retreat Blackburn</td>
+                <td><a href="mailto:Blackburn@gmail.uk">Blackburn@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>4th Planet Games</td>
+                <td><a href="mailto:Planetgames@libero.uk">Planetgames@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Mutant Dice Games</td>
+                <td><a href="mailto:MutantDiceGames@comicroom.uk">MutantDiceGames@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Lancaster Board and Sword</td>
+                <td><a href="mailto:Lancaster@comicroom.uk">Lancaster@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Spain Details -->
+        <div id="spain-d" style="display: none; overflow: scroll;">
+          <h1>Spain</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Gremio De Dragones</td>
+                <td><a href="mailto:Dragones@gmail.sp">Dragones@gmail.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Pulsar Store</td>
+                <td><a href="mailto:Pulsar@libero.sp">Pulsar@libero.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Dungeon Marvels</td>
+                <td><a href="mailto:Dungeon@comicroom.sp">Dungeon@comicroom.sp</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Joc & Rol</td>
+                <td><a href="mailto:JocndRol@comicroom.sp">JocndRol@comicroom.sp</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Netherlands Details -->
+        <div id="netherlands-d" style="display: none; overflow: scroll;">
+          <h1>Netherlands</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Purple Dragon</td>
+                <td><a href="mailto:PurpleDragon@gmail.uk">PurpleDragon@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>The Fantasy Realm</td>
+                <td><a href="mailto:Thefantasyrealm@libero.uk">Thefantasyrealm@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Arnhem</td>
+                <td><a href="mailto:Arnhem@comicroom.uk">Arnhem@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Warhammer</td>
+                <td><a href="mailto:Warhammer@comicroom.uk">Warhammer@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Ireland Details -->
+        <div id="ireland-d" style="display: none; overflow: scroll;">
+          <h1>Ireland</h1>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Venue</th>
+                <th scope="col">Contact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Tyrrelstown House</td>
+                <td><a href="mailto:TyrrelstownHouse@gmail.uk">TyrrelstownHouse@gmail.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Gloster House</td>
+                <td><a href="mailto:GlosterHouse@libero.uk">GlosterHouse@libero.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Reroll Games</td>
+                <td><a href="mailto:rerollgames@comicroom.uk">rerollgames@comicroom.uk</a></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>The Gathering</td>
+                <td><a href="mailto:Thegathering@comicroom.uk">Thegathering@comicroom.uk</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

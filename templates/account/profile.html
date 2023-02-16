@@ -37,25 +37,29 @@
                 </div>
             <!-- Right Side -->
             <div class="col-md-8" style="margin: auto;">
-                <!-- Name -->
-                <div class="gray row">
-                    <label class="col-md-6" for="name"><b>Name</b> </label>
-                    <label class="col-md-6" for="first_name">{{ user.first_name }}&nbsp;{{ user.last_name }}</label>
-                </div>
-                <!-- E-Mail -->
-                <div class="white row">
-                    <label class="col-md-6" for="name"><b>E-Mail</b> </label>
-                    <label class="col-md-6" for="first_name">{{ user.email }}</label>
-                </div>
-                <!-- Phone -->
-                <div class="gray row">
-                    <label class="col-md-6" for="name"><b>Phone</b> </label>
-                    {% if user.phone_number %}
-                        <label class="col-md-6" for="first_name">{{ user.phone_number }}</label>
-                    {% else %}
-                        <label class="col-md-6" for="first_name">NB</label>
-                    {% endif %}
-                </div>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <!-- Name -->
+                        <th>Name</th>
+                        <td>{{ user.first_name }}&nbsp;{{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <!-- E-Mail -->
+                        <th>E-Mail</th>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <!-- Phone -->
+                        <th>Phone</th>
+                        {% if user.phone_number %}
+                        <td>{{ user.email }}</td>
+                        {% else %}
+                        <td>-</td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

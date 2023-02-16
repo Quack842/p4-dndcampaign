@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'cloudinary',
     'phonenumber_field',
+    "django_flatpickr",
     'booker',
 ]
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django_flatpickr.widgets import DatePickerInput, DateTimePickerInput
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from djchoices import DjangoChoices, ChoiceItem
@@ -26,65 +27,64 @@ class BookVenue(models.Model):
     REGION_EUROPE = [
         ("Austria",
             (
-                ("1", "Kasematten - Schlossbergbühne"),
-                ("2", "Bilderbox"),
+                ("Kasematten - Schlossbergbühne", "Kasematten - Schlossbergbühne"),
+                ("Bilderbox", "Bilderbox"),
             )),
         ("Germany",
             (
-                ("1", "Le Royal - The Event hall"),
-                ("2", "Zapp Comics Games"),
-                ("3", "Comic Room"),
+                ("Le Royal - The Event hall", "Le Royal - The Event hall"),
+                ("Zapp Comics Games", "Zapp Comics Games"),
+                ("Comic Room", "Comic Room"),
             )),
         ("France",
             (
-                ("1", "Len’s PC Gamer"),
-                ("2", "G.E.E.K.S"),
-                ("3", "Librairie Comptoir de Reve"),
+                ("Len’s PC Gamer", "Len’s PC Gamer"),
+                ("G.E.E.K.S", "G.E.E.K.S"),
+                ("Librairie Comptoir de Reve", "Librairie Comptoir de Reve"),
             )),
         ("Italy",
             (
-                ("1", "Star Comic Store Napoli"),
-                ("2", "Comix Green"),
-                ("3", "Infinity Comics"),
-                ("4", "Games & Geeks"),
+                ("Star Comic Store Napoli", "Star Comic Store Napoli"),
+                ("Comix Green", "Comix Green"),
+                ("Infinity Comics", "Infinity Comics"),
+                ("Games & Geeks", "Games & Geeks"),
             )),
         ("Ireland",
             (
-                ("1", "Tyrrelstown House"),
-                ("2", "Gloster House"),
-                ("3", "Reroll Games"),
-                ("4", "The Gathering"),
+                ("Tyrrelstown House", "Tyrrelstown House"),
+                ("Gloster House", "Gloster House"),
+                ("Reroll Games", "Reroll Games"),
+                ("The Gathering", "The Gathering"),
             )),
         ("Netherlands",
             (
-                ("1", "Purple Dragon"),
-                ("2", "The Fantasy Realm"),
-                ("3", "Arnhem"),
-                ("4", "Warhammer"),
+                ("Purple Dragon", "Purple Dragon"),
+                ("The Fantasy Realm", "The Fantasy Realm"),
+                ("Arnhem", "Arnhem"),
+                ("Warhammer", "Warhammer"),
             )),
         ("Spain",
             (
-                ("1", "Gremio De Dragones"),
-                ("2", "Pulsar Store"),
-                ("3", "Dungeon Marvels"),
-                ("4", "Joc & Rol"),
+                ("Gremio De Dragones", "Gremio De Dragones"),
+                ("Pulsar Store", "Pulsar Store"),
+                ("Dungeon Marvels", "Dungeon Marvels"),
+                ("Joc & Rol", "Joc & Rol"),
             )),
         ("United Kingtom (UK)",
             (
-                ("1", "Geek Retreat Blackburn"),
-                ("2", "4th Planet Games"),
-                ("3", "Mutant Dice Games"),
-                ("4", "Lancaster Board and Sword"),
+                ("Geek Retreat Blackburn", "Geek Retreat Blackburn"),
+                ("4th Planet Games", "4th Planet Games"),
+                ("Mutant Dice Games", "Mutant Dice Games"),
+                ("Lancaster Board and Sword", "Lancaster Board and Sword"),
             )),
     ]
 
-    booking_id = models.UUIDField(primary_key=True, editable=False)
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="user_bookings")
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
-    booking_date = models.DateField(auto_now=False)
+    booking_date = models.DateTimeField(auto_now=False, unique=True)
     booking_comments = models.TextField(max_length=200, blank=True)
-    total_players = models.IntegerField()
 
-    class Meta:
-        ordering = ['-booking_date']
+    # show how we want it to be displayed
+    def __str__(self):
+        return str(self.user)

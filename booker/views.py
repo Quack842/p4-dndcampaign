@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, CreateCampaignForm
+from .forms import NewUserForm, CreateCampaignForm, BookForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.db import models
@@ -26,6 +26,7 @@ class UpcomingCampaigns(generic.TemplateView):
     template_name = "upcoming_campaigns.html"
 
 
+# To create a new Campaign
 class CreateCampaign(FormView):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
@@ -39,7 +40,8 @@ class CreateCampaign(FormView):
             form = form.save(commit=False)
             form.user = User.objects.get(id=self.request.user.id)
             form.save()
-            messages.success(self.request, f"{campaign_name} was successfully Registered!")
+            messages.success(self.request,
+                             f"{campaign_name} was successfully Registered!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(context, request))
@@ -50,9 +52,21 @@ class CreateCharacter(generic.TemplateView):
     template_name = "create_character.html"
 
 
-class Dashbaord(generic.TemplateView):
+class Dashbaord(FormView):
     """ This will be the Dashboard Page """
     template_name = "dashboard.html"
+    form_class = BookForm
+    success_url = '/dashboard'
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = User.objects.get(id=self.request.user.id)
+            form.save()
+            messages.success(request, "Successfully Registered to a Venue!")
+            return super().form_valid(form)
+
+        return HttpResponse(template.render(context, request))
 
 
 class Venue(generic.TemplateView):
@@ -65,6 +79,7 @@ class Profile(generic.TemplateView):
     template_name = "account/profile.html"
 
 
+# To create a new User
 def register_request(request):
     """
     To create the Register Form
@@ -83,6 +98,7 @@ def register_request(request):
                   context={"register_form": form})
 
 
+# To Log into account
 def login_request(request):
     """
     To Log into account form
@@ -106,6 +122,7 @@ def login_request(request):
                   context={"login_form": form})
 
 
+# To log out of account
 def logout_request(request):
     """
     To Log out of the account form
@@ -113,5 +130,3 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You Have Successfully Logged Out!")
     return redirect("home")
-
-

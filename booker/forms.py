@@ -1,5 +1,6 @@
 from django import forms
-from django.forms import ModelForm, TextInput, NumberInput
+from django.forms import ModelForm, TextInput, NumberInput, Select
+from django_flatpickr.widgets import DatePickerInput, DateTimePickerInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from phonenumber_field.formfields import PhoneNumberField
@@ -33,8 +34,25 @@ class BookForm(forms.ModelForm):
             'venue',
             'booking_date',
             'booking_comments',
-            'total_players',
         )
+
+        widgets = {
+            'venue': Select(attrs={
+                'class': 'form-control',
+            }),
+            'booking_date': DatePickerInput(attrs={
+                'class': "form-control",
+                }),
+            'booking_comments': TextInput(attrs={
+                'class': "form-control",
+                }),
+        }
+
+    def save(self, commit=False):
+        user = super(BookVenue, self).save(commit=False)
+        if commit:
+            user.save()
+        return user
 
 
 class CreateCampaignForm(forms.ModelForm):
