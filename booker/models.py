@@ -82,7 +82,7 @@ class BookVenue(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
-    booking_date = models.DateTimeField(auto_now=False, unique=True)
+    booking_date = models.DateField(auto_now=False, unique=True)
     booking_comments = models.TextField(max_length=200, blank=True)
 
     # show how we want it to be displayed

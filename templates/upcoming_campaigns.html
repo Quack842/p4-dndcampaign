@@ -3,6 +3,21 @@
 
 {% block content %}
     <div class="container">
-        
+        {{ user.bookvenue.venue }}
+        {% for venues in venue_list  %}
+        <div class="col-sm-6 col-md-4 col-lg-3 px-1 d-flex align-items-stretch">
+            <div class="card card-detail recipe-card mb-3 shadow-sm mx-auto mx-sm-2">
+                <div class="card-body pb-1">
+                    <h2 class="card-title recipe-detail-title text-truncate">{{ bookvenue.venue }}</h2>
+                    <p class="card-text">
+                        <span><i class="far fa-clock pr-2"></i></span>
+                        <span>Cook Time: {{ bookvenue. }}</span>
+                    </p>
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="stretched-link"
+                        aria-label="recipe-detail"></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 {% endblock %}
