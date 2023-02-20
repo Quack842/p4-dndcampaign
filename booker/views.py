@@ -3,7 +3,8 @@ from .forms import NewUserForm, CreateCampaignForm, BookForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.db import models
-from .models import Campaign
+from .models import Campaign, BookVenue
+from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.forms import AuthenticationForm
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
@@ -22,8 +23,13 @@ class Home(generic.TemplateView):
 
 
 class UpcomingCampaigns(generic.TemplateView):
-    """ This will be the Upcomming Campaigns Page """
-    template_name = "upcoming_campaigns.html"
+    """
+    This view is used to display all booking in the browse booing page
+    """
+    model = BookVenue
+    queryset = BookVenue.objects.order_by('-booking_date')
+    template_name = 'upcoming_campaigns.html'
+    paginate_by = 8
 
 
 # To create a new Campaign
@@ -32,7 +38,7 @@ class CreateCampaign(FormView):
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
     success_url = '/dashboard'
-    campaign_loop = Campaign.objects.all()
+    campaign = Campaign.objects.all()
 
     def form_valid(self, form):
         if form.is_valid():
@@ -44,7 +50,15 @@ class CreateCampaign(FormView):
                              f"{campaign_name} was successfully Registered!")
             return super().form_valid(form)
 
-        return HttpResponse(template.render(context, request))
+        return render(request,
+                      "create_campaign.html",
+                      {
+                            "campaign_name": campaign_name,
+                            "dungeon_master": dungeon_master,
+                            "total_players": total_players,
+                            "discription": discription,
+                      },)
+        # return HttpResponse(template.render(context, request))
 
 
 class CreateCharacter(generic.TemplateView):
@@ -63,7 +77,8 @@ class Dashbaord(FormView):
             form = form.save(commit=False)
             form.user = User.objects.get(id=self.request.user.id)
             form.save()
-            messages.success(request, "Successfully Registered to a Venue!")
+            messages.success(self.request,
+                             "Successfully Registered to a Venue!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(context, request))

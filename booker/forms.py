@@ -3,6 +3,7 @@ from django.forms import ModelForm, TextInput, NumberInput, Select
 from django_flatpickr.widgets import DatePickerInput, DateTimePickerInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django_summernote.widgets import SummernoteWidget
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
 from .models import BookVenue, Campaign
@@ -43,13 +44,11 @@ class BookForm(forms.ModelForm):
             'booking_date': DatePickerInput(attrs={
                 'class': "form-control",
                 }),
-            'booking_comments': TextInput(attrs={
-                'class': "form-control",
-                }),
+            'booking_comments': SummernoteWidget()
         }
 
     def save(self, commit=False):
-        user = super(BookVenue, self).save(commit=False)
+        user = super(BookForm, self).save(commit=False)
         if commit:
             user.save()
         return user
@@ -82,9 +81,7 @@ class CreateCampaignForm(forms.ModelForm):
                 'min': 3.0,
                 'text-align': 'center'
                 }),
-            'discription': TextInput(attrs={
-                'class': "form-control input-group-prepend",
-                }),
+            'discription': SummernoteWidget(),
         }
 
     def save(self, commit=False):

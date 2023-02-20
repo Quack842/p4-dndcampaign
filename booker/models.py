@@ -4,12 +4,13 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from djchoices import DjangoChoices, ChoiceItem
 from django.contrib.postgres.fields import ArrayField
+from django_summernote.widgets import SummernoteWidget
 from django.core.validators import ValidationError
 
 
 class Campaign(models.Model):
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="campaigns")
     campaign_name = models.CharField(max_length=150, unique=True,
                                      verbose_name="")
     dungeon_master = models.CharField(max_length=150,
@@ -79,11 +80,19 @@ class BookVenue(models.Model):
             )),
     ]
 
-    user = models.OneToOneField(
-        User, on_delete=models.CASCADE, primary_key=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="venues")
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
-    booking_date = models.DateField(auto_now=False, unique=True)
+    booking_date = models.DateField(auto_now=False)
     booking_comments = models.TextField(max_length=200, blank=True)
+
+    class Meta:
+        """To display the booking by booking_date descending order"""
+        ordering = ['-booking_date']
+
+    def get_absolute_url(self):
+        """Get url after user adds/edits venue"""
+        return reverse('upcoming_campaigns', kwargs={'slug': self.slug})
 
     # show how we want it to be displayed
     def __str__(self):

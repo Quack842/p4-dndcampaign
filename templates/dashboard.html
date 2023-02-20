@@ -17,43 +17,57 @@
         </div>
     </div>
     {% endif %}
-        <div class="card" style="color: #484848; margin: 50px;">
-            <div class="card-header">
-                <h1 class="card-title" style="text-align: center;">{{ user.campaign.campaign_name }}</h1>
-            </div>
-            <div class="card-body row">
-                <div class="col-md-7">
-                    <h2>Dungeon Master</h2>
-                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.dungeon_master }}</h4>
+    <div class="card" style="color: #484848; margin: 50px;">
+        <div class="card-header">
+            <h1 class="card-title" style="text-align: center;">Campaigns</h1>
+        </div>
+        {{ campaign.campaign_name }}
+        <!-- Shows created campaigns -->
+        {% for campaign in campaigns_list %}
+        <div class="card-body row">
+            <div class="col-md-7">
+                <h1 style="text-align: center;">{{ user.campaign.campaign_name }}</h1>
 
-                    <h2>Total Players</h2>
-                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.total_players }}</h4>  
-                </div>
-                <div class="col-md-5">
-                    <h2>Description</h2>
-                    <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.discription }}</h4>
-                </div>
+                <h2>Dungeon Master</h2>
+                <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.dungeon_master }}</h4>
+
+                <h2>Total Players</h2>
+                <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.total_players }}</h4>  
+            </div>
+            <div class="col-md-5">
+                <h2>Description</h2>
+                <p>{{ user.campaign.discription | safe }}</p>
             </div>
         </div>
-        {% if user.bookvenue != True %}
-        <div class="card" style="color: #484848; margin: 50px;">
-            <form method="POST" enctype="multipart/form-data" class="campaign-form">
-                <h1>Add Campaign to Venue</h1>
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                <button class="btn start-button" type="submit">Create</button>
-            </form>
+        {% endfor %}
+    </div>
+    <!-- Shows Current booked venues -->
+    <div class="card" style="color: #484848; margin: 50px;">
+        <div class="card-header">
+            <h1 class="card-title" style="text-align: center;">Campaigns booked at a Venue</h1>
         </div>
-        {% elif user.bookvenue %}
-        <div class="card" style="color: #484848; margin: 50px;">
-            <div class="card-header">
-                <h1 class="card-title" style="text-align: center;">{{ user.bookvenue.venue }}</h1>
-            </div>
-            <div>
-                <button>Edit</button>
-            </div>
+        <div class="card-body">
+            <h4>Venue</h4>
+            <p>{{ user.bookvenue.venue }}</p>
+            <h4>Date</h4>
+            <p>{{ user.bookvenue.booking_date }}</p>
         </div>
-        {% endif %}
+        <div class="card-footer">
+            <button class="btn start-button">Edit</button>
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data" class="card campaign-form" style="color: #484848; margin: 50px;">
+        <div class="card-header">
+            <h1 class="card-title">Add Campaign to Venue</h1>
+        </div>
+        <div class="card-body">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+        </div>
+        <div class="card-footer">
+            <button class="btn start-button" type="submit">Create</button>
+        </div>
+    </form>
 </div>
 {% endblock %}

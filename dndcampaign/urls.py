@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from booker import views
 from django.conf.urls.static import static
 from django.conf import settings
@@ -36,4 +37,5 @@ urlpatterns = [
     path('createcampaign/', views.CreateCampaign.as_view(),
          name="createcampaign"),
     path('profile/', views.Profile.as_view(), name="profile"),
+    path('summernote/', include('django_summernote.urls')),
 ]
