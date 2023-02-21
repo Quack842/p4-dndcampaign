@@ -176,6 +176,11 @@ h1, h2, h4, h5 {
     margin: auto;
     padding: 5px;
 }
+/* Dashboard */
+.p-style {
+    font-size: 2em;
+    color: #484848;
+}
 /* Venue */
 
 @media screen and (max-width: 980px) {

@@ -6,6 +6,7 @@ from djchoices import DjangoChoices, ChoiceItem
 from django.contrib.postgres.fields import ArrayField
 from django_summernote.widgets import SummernoteWidget
 from django.core.validators import ValidationError
+from django.utils import timezone
 
 
 class Campaign(models.Model):
@@ -17,6 +18,10 @@ class Campaign(models.Model):
                                       verbose_name="")
     total_players = models.IntegerField()
     discription = models.TextField(max_length=300, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_on"]
 
     # show how we want it to be displayed
     def __str__(self):
@@ -28,7 +33,8 @@ class BookVenue(models.Model):
     REGION_EUROPE = [
         ("Austria",
             (
-                ("Kasematten - Schlossbergbühne", "Kasematten - Schlossbergbühne"),
+                ("Kasematten - Schlossbergbühne",
+                 "Kasematten - Schlossbergbühne"),
                 ("Bilderbox", "Bilderbox"),
             )),
         ("Germany",

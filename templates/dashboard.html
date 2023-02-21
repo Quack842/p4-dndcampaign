@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block content %}
 {% load crispy_forms_tags %}
 
@@ -21,24 +20,31 @@
         <div class="card-header">
             <h1 class="card-title" style="text-align: center;">Campaigns</h1>
         </div>
-        {{ campaign.campaign_name }}
         <!-- Shows created campaigns -->
-        {% for campaign in campaigns_list %}
+        {% for campaign in campaign_list %}
         <div class="card-body row">
             <div class="col-md-7">
-                <h1 style="text-align: center;">{{ user.campaign.campaign_name }}</h1>
+                <h1 style="color: #6d0101;">Campaign Name:</h1>
+                <p class="p-style">{{ campaign.campaign_name }}</h4>
 
                 <h2>Dungeon Master</h2>
-                <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.dungeon_master }}</h4>
+                <p class="p-style">{{ campaign.dungeon_master }}</p>
 
                 <h2>Total Players</h2>
-                <h4 style="color: #808080; font-family: 'Kanit', sans-serif;">{{ user.campaign.total_players }}</h4>  
+                <p class="p-style">{{ campaign.total_players }}</p>  
             </div>
             <div class="col-md-5">
                 <h2>Description</h2>
-                <p>{{ user.campaign.discription | safe }}</p>
+                <p>{{ campaign.discription | safe }}</p>
             </div>
         </div>
+        <span>
+            <a class="action-btn btn btn-info" href="{% url 'delete_campaign' dashboard.slug %}"
+                aria-label="delete_campaign">
+                <i class="fas fa-times"></i>
+            </a>
+        </span>
+        <hr>
         {% endfor %}
     </div>
     <!-- Shows Current booked venues -->

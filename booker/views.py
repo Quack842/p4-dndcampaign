@@ -8,6 +8,9 @@ from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.forms import AuthenticationForm
 from phonenumber_field.formfields import PhoneNumberField
 from phonenumber_field.phonenumber import PhoneNumber
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic, View
 from django.contrib.auth.decorators import login_required
@@ -38,7 +41,6 @@ class CreateCampaign(FormView):
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
     success_url = '/dashboard'
-    campaign = Campaign.objects.all()
 
     def form_valid(self, form):
         if form.is_valid():
@@ -50,15 +52,7 @@ class CreateCampaign(FormView):
                              f"{campaign_name} was successfully Registered!")
             return super().form_valid(form)
 
-        return render(request,
-                      "create_campaign.html",
-                      {
-                            "campaign_name": campaign_name,
-                            "dungeon_master": dungeon_master,
-                            "total_players": total_players,
-                            "discription": discription,
-                      },)
-        # return HttpResponse(template.render(context, request))
+        return HttpResponse(template.render(context, request))
 
 
 class CreateCharacter(generic.TemplateView):
@@ -66,9 +60,14 @@ class CreateCharacter(generic.TemplateView):
     template_name = "create_character.html"
 
 
-class Dashbaord(FormView):
-    """ This will be the Dashboard Page """
+class CampaignList(generic.ListView):
+    model = Campaign
+    queryset = Campaign.objects.order_by("-created_on")
     template_name = "dashboard.html"
+
+
+class Dashboard(View):
+    """ This will be the Dashboard Page """
     form_class = BookForm
     success_url = '/dashboard'
 
@@ -81,7 +80,19 @@ class Dashbaord(FormView):
                              "Successfully Registered to a Venue!")
             return super().form_valid(form)
 
-        return HttpResponse(template.render(context, request))
+        # return HttpResponse(template.render(request, context))
+        return render(
+            request,
+            "dashboard.html",
+            {
+                "user": user,
+                "campaign_name": campaign_name,
+                "dungeon_master": dungeon_master,
+                "total_players": total_players,
+                "discription": discription,
+                "created_on": created_on
+            },
+        )
 
 
 class Venue(generic.TemplateView):
@@ -145,3 +156,32 @@ def logout_request(request):
     logout(request)
     messages.info(request, "You Have Successfully Logged Out!")
     return redirect("home")
+
+
+# Delete a campaign
+class DeleteCampaign(
+        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    """
+    This view is used to allow logged in users to delete their own recipes
+    """
+    model = Campaign
+    template_name = 'delete_campaign.html'
+    success_message = "Recipe deleted successfully"
+    success_url = '/dashboard'
+
+    def test_func(self):
+        """
+        Prevent another user from deleting other's recipes
+        """
+        campaign = self.get_object()
+        return campaign.user == self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        """
+        This function is used to display sucess message given
+        SucessMessageMixin cannot be used in generic.DeleteView.
+        Credit: https://stackoverflow.com/questions/24822509/
+        success-message-in-deleteview-not-shown
+        """
+        messages.success(self.request, self.success_message)
+        return super(DeleteCampaign, self).delete(request, *args, **kwargs)
