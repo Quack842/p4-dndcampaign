@@ -177,6 +177,12 @@ h1, h2, h4, h5 {
     margin: auto;
     padding: 5px;
 }
+#id_campaign_name {
+    margin-bottom: 20px;
+}
+#id_dungeon_master {
+    margin-bottom: 20px;
+}
 /* Dashboard */
 .card-main-style {
     text-align: center;
@@ -187,6 +193,7 @@ h1, h2, h4, h5 {
     border-radius: 13px;
     padding: 20px;
     margin-bottom: 10px;
+    border: 2px solid #fff1aea6;
 }
 .card-h-style{
     color: #a90000;

@@ -85,9 +85,10 @@ class BookVenue(models.Model):
                 ("Lancaster Board and Sword", "Lancaster Board and Sword"),
             )),
     ]
-
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="venues")
+    campaigns = models.CharField(
+                choices=Campaign.objects.values_list('campaign_name', 'campaign_name'), max_length=150)
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
     booking_date = models.DateField(auto_now=False)
     booking_comments = models.TextField(max_length=200, blank=True)
@@ -95,10 +96,6 @@ class BookVenue(models.Model):
     class Meta:
         """To display the booking by booking_date descending order"""
         ordering = ['-booking_date']
-
-    def get_absolute_url(self):
-        """Get url after user adds/edits venue"""
-        return reverse('upcoming_campaigns', kwargs={'slug': self.slug})
 
     # show how we want it to be displayed
     def __str__(self):

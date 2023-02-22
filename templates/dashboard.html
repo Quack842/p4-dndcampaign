@@ -3,7 +3,7 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<!-- Create Campaign -->
+<!-- Messages -->
 <div class="container">
     {% if messages %}
     <div class="card border-danger mb-3">
@@ -38,16 +38,27 @@
                     <h3 class="card-h-style">Description</h3>
                     <p>{{ campaign.description | safe }}</p>
                 </div>
+
             </div>
-            <a class="btn start-button" href="{% url 'delete_campaign' campaign.id %}">Delete Campaign</a>
+            <hr>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6">
+                    <a class="btn start-button" href="{% url 'delete_campaign' campaign.id %}">Delete Campaign</a>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn start-button" href="{% url 'edit_campaign' campaign.id %}" style="background: #0640c5;
+                    background-image: linear-gradient(to bottom, #005dff, #030000);">Edit Campaign</a>
+                </div>
+            </div>
         </div>
         {% endfor %}
-    <!-- Shows Current booked venues -->
-    <div class="card" style="color: #484848; margin: 50px;">
-        <div class="card-header">
-            <h1 class="card-title" style="text-align: center;">Campaigns booked at a Venue</h1>
+        <!-- Shows Current booked venues -->
+        <div class="card" style="margin-bottom: 10px; color: #484848;">
+            <div class="card-header">
+                <h1 class="card-title" style="text-align: center;">Campaigns Booked at Venues</h1>
+            </div>
         </div>
-        <div class="card-body">
+        <div class="">
             <h4>Venue</h4>
             <p>{{ user.bookvenue.venue }}</p>
             <h4>Date</h4>

@@ -55,44 +55,28 @@ class CreateCampaign(FormView):
         return HttpResponse(template.render(context, request))
 
 
-class CreateCharacter(generic.TemplateView):
-    """ This will be the Create Character Page """
-    template_name = "create_character.html"
-
-
 class CampaignList(generic.ListView):
     model = Campaign
     queryset = Campaign.objects.order_by("-created_on")
     template_name = "dashboard.html"
 
 
-class Dashboard(View):
+class Dashboard(FormView):
     """ This will be the Dashboard Page """
+    template_name = "dashboard.html"
     form_class = BookForm
     success_url = '/dashboard'
 
     def form_valid(self, form):
         if form.is_valid():
             form = form.save(commit=False)
-            form.user = User.objects.get(id=self.request.user.id)
+            form.user = Campaign.objects.get(id=self.request.user.id)
             form.save()
             messages.success(self.request,
                              "Successfully Registered to a Venue!")
             return super().form_valid(form)
 
-        # return HttpResponse(template.render(request, context))
-        return render(
-            request,
-            "dashboard.html",
-            {
-                "user": user,
-                "campaign_name": campaign_name,
-                "dungeon_master": dungeon_master,
-                "total_players": total_players,
-                "description": description,
-                "created_on": created_on
-            },
-        )
+        return HttpResponse(template.render(request, context))
 
 
 class Venue(generic.TemplateView):
@@ -186,5 +170,68 @@ class DeleteCampaign(View):
             messages.SUCCESS,
             'Your campaign has been deleted.'
         )
+
+        return redirect("dashboard")
+
+
+# Edit Campaign
+class EditCampaign(View):
+    """ View to allow user to edit a specific question"""
+
+    def get(self, request, id):
+        """ Get question data and return a prefilled form """
+
+        queryset = Campaign.objects.all()
+        campaign = get_object_or_404(queryset, id=id)
+
+        data = {'campaign_name': campaign.campaign_name,
+                'dungeon_master': campaign.dungeon_master,
+                'total_players': campaign.total_players,
+                'description': campaign.description,
+                }
+        edit_form = CreateCampaignForm(initial=data)
+
+        return render(
+            request,
+            'edit_campaign.html',
+            {
+                'campaign': campaign,
+                'edit_form': edit_form
+            }
+        )
+
+    def post(self, request, id):
+        """ Update existing question using the form data
+        and return to the home page
+        """
+
+        queryset = Campaign.objects.all()
+        campaign = get_object_or_404(queryset, id=id)
+
+        edit_form = CreateCampaignForm(instance=campaign, data=request.POST)
+
+        if edit_form.is_valid():
+            campaign.campaign_name = edit_form.cleaned_data.get(
+                                     'campaign_name')
+            campaign.dungeon_master = edit_form.cleaned_data.get(
+                                      'dungeon_master')
+            campaign.total_players = edit_form.cleaned_data.get(
+                                     'total_players')
+            campaign.description = edit_form.cleaned_data.get(
+                                   'description')
+            campaign.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'You edited your Campaign successfully.'
+            )
+
+        else:
+            edit_form = CreateCampaignForm()
+            messages.add_message(
+                request,
+                messages.WARNING,
+                'Your question has not been edited.'
+            )
 
         return redirect("dashboard")

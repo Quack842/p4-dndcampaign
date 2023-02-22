@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="card-design" style="text-align: center;">
+        <h1 class="page-title" style="text-align: center;">Edit Campaign</h1>
+        <!-- Edit Question form -->
+        <form class="campaign-form" method="POST" action="{% url 'edit_campaign' campaign.id %}">
+            {{ edit_form | crispy }}
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn start-button" style="background: #0640c5;
+                    background-image: linear-gradient(to bottom, #005dff, #030000);">Submit</button>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn start-button" href="{% url 'dashboard' %}">Cancel</a>
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

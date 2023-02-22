@@ -29,13 +29,12 @@ urlpatterns = [
          name='upcoming_campaigns'),
     path('createcampaign/', views.CreateCampaign.as_view(),
          name='create_campaign'),
-    path('createcharacter/', views.CreateCharacter.as_view(),
-         name='create_character'),
     path('dashboard/', views.CampaignList.as_view(), name='dashboard'),
     path('venues/', views.Venue.as_view(), name='venues'),
     path('signup/', views.register_request, name="signup"),
     path('login/', views.login_request, name="login"),
     path('logout/', views.logout_request, name="logout"),
+    path('bookvenue/', views.Dashboard.as_view(), name="bookvenue"),
     path('createcampaign/', views.CreateCampaign.as_view(),
          name="createcampaign"),
     path('profile/', views.Profile.as_view(), name="profile"),
@@ -46,6 +45,11 @@ urlpatterns = [
         'delete_campaign/<int:id>/',
         views.DeleteCampaign.as_view(),
         name='delete_campaign'
+    ),
+    path(
+        'edit_campaign/<int:id>/',
+        views.EditCampaign.as_view(),
+        name='edit_campaign'
     ),
 
 

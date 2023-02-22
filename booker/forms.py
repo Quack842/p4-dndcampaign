@@ -33,12 +33,16 @@ class BookForm(forms.ModelForm):
 
         fields = (
             'venue',
+            'campaigns',
             'booking_date',
             'booking_comments',
         )
 
         widgets = {
             'venue': Select(attrs={
+                'class': 'form-control',
+            }),
+            'campaigns': Select(attrs={
                 'class': 'form-control',
             }),
             'booking_date': DatePickerInput(attrs={
