@@ -63,7 +63,7 @@ class CreateCampaignForm(forms.ModelForm):
             'campaign_name',
             'dungeon_master',
             'total_players',
-            'discription',
+            'description',
         )
 
         widgets = {
@@ -81,7 +81,7 @@ class CreateCampaignForm(forms.ModelForm):
                 'min': 3.0,
                 'text-align': 'center'
                 }),
-            'discription': SummernoteWidget(),
+            'description': SummernoteWidget(),
         }
 
     def save(self, commit=False):

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NewUserForm, CreateCampaignForm, BookForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -16,7 +16,7 @@ from django.views import generic, View
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from cloudinary.forms import cl_init_js_callbacks
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, DeleteView
 from django.contrib.auth.models import User
 
 
@@ -89,7 +89,7 @@ class Dashboard(View):
                 "campaign_name": campaign_name,
                 "dungeon_master": dungeon_master,
                 "total_players": total_players,
-                "discription": discription,
+                "description": description,
                 "created_on": created_on
             },
         )
@@ -158,30 +158,33 @@ def logout_request(request):
     return redirect("home")
 
 
-# Delete a campaign
-class DeleteCampaign(
-        LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
-    """
-    This view is used to allow logged in users to delete their own recipes
-    """
-    model = Campaign
-    template_name = 'delete_campaign.html'
-    success_message = "Recipe deleted successfully"
-    success_url = '/dashboard'
+# Delete Campaign
+class DeleteCampaign(View):
+    def get(self, request, id):
+        """ Get question to be deleted and render a delete form """
 
-    def test_func(self):
-        """
-        Prevent another user from deleting other's recipes
-        """
-        campaign = self.get_object()
-        return campaign.user == self.request.user
+        queryset = Campaign.objects.all()
+        campaign = get_object_or_404(queryset, id=id)
 
-    def delete(self, request, *args, **kwargs):
-        """
-        This function is used to display sucess message given
-        SucessMessageMixin cannot be used in generic.DeleteView.
-        Credit: https://stackoverflow.com/questions/24822509/
-        success-message-in-deleteview-not-shown
-        """
-        messages.success(self.request, self.success_message)
-        return super(DeleteCampaign, self).delete(request, *args, **kwargs)
+        return render(
+            request,
+            'delete_campaign.html',
+            {
+                'campaign': campaign,
+            }
+        )
+
+    def post(self, request, id):
+        """ Delete existing question """
+
+        queryset = Campaign.objects.all()
+        campaign = get_object_or_404(queryset, id=id)
+
+        campaign.delete()
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            'Your campaign has been deleted.'
+        )
+
+        return redirect("dashboard")

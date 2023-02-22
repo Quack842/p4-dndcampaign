@@ -16,37 +16,32 @@
         </div>
     </div>
     {% endif %}
-    <div class="card" style="color: #484848; margin: 50px;">
+    <div class="card" style="margin-bottom: 10px; color: #484848;">
         <div class="card-header">
             <h1 class="card-title" style="text-align: center;">Campaigns</h1>
         </div>
+    </div>
         <!-- Shows created campaigns -->
         {% for campaign in campaign_list %}
-        <div class="card-body row">
-            <div class="col-md-7">
-                <h1 style="color: #6d0101;">Campaign Name:</h1>
-                <p class="p-style">{{ campaign.campaign_name }}</h4>
+        <div class="card-design">
+            <div class="row">
+                <h1 class="card-main-style" id="campaign-name">{{ campaign.campaign_name }}</h1>
+                <hr>
+                <div class="col-md-7">
+                    <h3 class="card-h-style">Dungeon Master</h3>
+                    <p class="p-style">{{ campaign.dungeon_master }}</p>
 
-                <h2>Dungeon Master</h2>
-                <p class="p-style">{{ campaign.dungeon_master }}</p>
-
-                <h2>Total Players</h2>
-                <p class="p-style">{{ campaign.total_players }}</p>  
+                    <h3 class="card-h-style">Total Players</h3>
+                    <p class="p-style">{{ campaign.total_players }}</p>  
+                </div>
+                <div class="col-md-5">
+                    <h3 class="card-h-style">Description</h3>
+                    <p>{{ campaign.description | safe }}</p>
+                </div>
             </div>
-            <div class="col-md-5">
-                <h2>Description</h2>
-                <p>{{ campaign.discription | safe }}</p>
-            </div>
+            <a class="btn start-button" href="{% url 'delete_campaign' campaign.id %}">Delete Campaign</a>
         </div>
-        <span>
-            <a class="action-btn btn btn-info" href="{% url 'delete_campaign' dashboard.slug %}"
-                aria-label="delete_campaign">
-                <i class="fas fa-times"></i>
-            </a>
-        </span>
-        <hr>
         {% endfor %}
-    </div>
     <!-- Shows Current booked venues -->
     <div class="card" style="color: #484848; margin: 50px;">
         <div class="card-header">

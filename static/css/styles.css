@@ -17,6 +17,7 @@ h1, h2, h4, h5 {
     position: fixed;
     width: 100%;
     padding: 10px 30px;
+    padding-right: 50px;
     z-index: 10;
 }
 .navbar a {
@@ -177,9 +178,21 @@ h1, h2, h4, h5 {
     padding: 5px;
 }
 /* Dashboard */
-.p-style {
-    font-size: 2em;
-    color: #484848;
+.card-main-style {
+    text-align: center;
+    color: #aeaeae;
+}
+.card-design {
+    background-color: #191919f3;
+    border-radius: 13px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.card-h-style{
+    color: #a90000;
+}
+.card-design:nth-child(2n+1) {
+    background-color: #2f2f2ff3;
 }
 /* Venue */
 

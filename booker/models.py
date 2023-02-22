@@ -17,7 +17,7 @@ class Campaign(models.Model):
     dungeon_master = models.CharField(max_length=150,
                                       verbose_name="")
     total_players = models.IntegerField()
-    discription = models.TextField(max_length=300, blank=True)
+    description = models.TextField(max_length=300, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:

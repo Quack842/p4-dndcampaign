@@ -14,11 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from django.urls import include
+from django.urls import path, include
+from django.conf.urls import url
 from booker import views
 from django.conf.urls.static import static
 from django.conf import settings
+
+app_name = 'campaigns'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,8 +32,6 @@ urlpatterns = [
     path('createcharacter/', views.CreateCharacter.as_view(),
          name='create_character'),
     path('dashboard/', views.CampaignList.as_view(), name='dashboard'),
-    path('campaign/<slug:slug>/delete/', views.DeleteCampaign.as_view(),
-         name='delete_campaign'),
     path('venues/', views.Venue.as_view(), name='venues'),
     path('signup/', views.register_request, name="signup"),
     path('login/', views.login_request, name="login"),
@@ -39,5 +39,14 @@ urlpatterns = [
     path('createcampaign/', views.CreateCampaign.as_view(),
          name="createcampaign"),
     path('profile/', views.Profile.as_view(), name="profile"),
+    path('deletecampaign/', views.DeleteCampaign.as_view(),
+         name="delete_campaign"),
     path('summernote/', include('django_summernote.urls')),
+    path(
+        'delete_campaign/<int:id>/',
+        views.DeleteCampaign.as_view(),
+        name='delete_campaign'
+    ),
+
+
 ]

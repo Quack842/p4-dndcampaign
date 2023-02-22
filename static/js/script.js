@@ -1,3 +1,13 @@
+// Confirm Delete
+function confirmDelete() {
+  var name = getElementById("campaign-name")
+  var result = confirm("Want to delete " + name + "?");
+  if (result) {
+      console.log("Deleted")
+}
+}
+
+// Country Dropdown
 function ausShow() {
     document.getElementById('austria').style.display = "block";
     document.getElementById('germany').style.display = "none";
