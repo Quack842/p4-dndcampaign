@@ -79,9 +79,22 @@ class Dashboard(FormView):
         return HttpResponse(template.render(request, context))
 
 
-class Venue(generic.TemplateView):
+class Venue(FormView):
     """ This will be the Venue Page """
     template_name = "venues.html"
+    form_class = BookForm
+    success_url = '/dashboard'
+
+    def form_valid(self, form):
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = Campaign.objects.get(id=self.request.user.id)
+            form.save()
+            messages.success(self.request,
+                             "Successfully Registered to a Venue!")
+            return super().form_valid(form)
+
+        return HttpResponse(template.render(request, context))
 
 
 class Profile(generic.TemplateView):

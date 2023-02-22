@@ -68,18 +68,5 @@
             <button class="btn start-button">Edit</button>
         </div>
     </div>
-    <form method="POST" enctype="multipart/form-data" class="card campaign-form" style="color: #484848; margin: 50px;">
-        <div class="card-header">
-            <h1 class="card-title">Add Campaign to Venue</h1>
-        </div>
-        <div class="card-body">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-        </div>
-        <div class="card-footer">
-            <button class="btn start-button" type="submit">Create</button>
-        </div>
-    </form>
 </div>
 {% endblock %}
