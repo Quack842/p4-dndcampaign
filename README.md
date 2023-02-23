@@ -30,13 +30,13 @@ s
 
 #### Project Goals
 
-* The website contains dark themed colors that was inspired by [D&D Beyond](https://www.dndbeyond.com/).
+* The website contains dark themed colors that were inspired by [D&D Beyond](https://www.dndbeyond.com/).
 * Responsive design to make the website accessible on different screen sizes.
-* Structure is easy to understand and navigates effortlessly.
+* The Structure is easy to understand and navigates effortlessly.
 * Site users are able to register an account in order to interact with the content.
 * Site users are able to create multiple campaigns with a name, dungeon Master, total Players that will attend and a description.
 * Site users are able to book a venue with their campaigns at the desired location.
-* Site users, when loggin in, will be able to view their dahsboard, this is where they will be able to view, edit or delete the campaigns they have created.
+* Site users, when logging in, will be able to view their dashboard, this is where they will be able to view, edit or delete the campaigns they have created.
 * Site users will be able to view the upcoming campaigns, that users with accounts, have created.
 ***
 #### User Goals
@@ -48,138 +48,59 @@ s
 * As a Site User, I can book a venue with the campaigns that I created.
 * As a Site User, I want to manage the content I created.
 ***
-#### Strategy Table
-
-Opportunity / Problem | Importance | Viability / Feasibility
---- | --- | ---
-Responsive design | 5 | 5
-Account registration | 5 | 5
-Create, edit and delete campaigns | 5 | 5
-Create, edit and delete Venue Booking | 5 | 4
-Ability to view upcoming campaigns | 4 | 4
-**Total** | **24** | **23**
-***
-### Scope
-
-According to the strategy table, not all features can be implemented in the first release of the project. For this reason, the project will be divided in multiple phases. The first phase will include the features that have been identified in order to build the minimum viable product.
-
-**First Phase**
-
-* Responsive design
-
-* Account registration
-
-* Create, edit and delete questions
-
-* Create, edit and delete replies
-
-* Ability to search for questions
-
-* Upvote / downvote question and replies
-
-**Second Phase**
-
-* Ability to add profile picture
-
-* Social media signup
-
-* Add tags to the questions
-
-
 #### User Stories
 
-GitHub projects was used as my project management tool to track user stories. Using a Kanban board helped to focus on specific tasks and track the project progress.
+GitHub projects was used as my project management tool to track user stories. It was quite difficult for me to get use to using the story board, as I am not use to using it.
 
 **Start**
-![User Stories Progress - Start](assets/readme_files/user_stories_start.png)
+![User Stories Progress - Start](assets/readme-files/user-stories-start.png)
 
 **Week 1**
-![User Stories Progress - Week 1](assets/readme_files/user_stories_week1.png)
+![User Stories Progress - Week 1](assets/readme-files/user-stories-week1.png)
 
 **Week 2**
-![User Stories Progress - Week 2](assets/readme_files/user_stories_week2.png)
+![User Stories Progress - Week 2](assets/readme-files/user-stories-week2.png)
 
-**Week 3**
-![User Stories Progress - Week 3](assets/readme_files/user_stories_week3.png)
+**Week 4**
+![User Stories Progress - Week 4](assets/readme-files/user-stories-week4.png)
 
+**Week 5**
+![User Stories Progress - Week 5](assets/readme-files/user-stories-week5.png)
 
-### Structure
-
-The website has been organized in a Hierarchical Tree Structure to ensure the site user navigates through the site effortlessly and intuitively. Here you can you can find the website map design.
-
-![Code Buddy website map](assets/readme_files/sitemap.jpg)
-
-* Header, footer and navigation bar are consistent through all pages.
-
-* Links and forms provide clear feedback to the site user.
-
-* The opportunity to add additional content to the website is provided for the site user once they register an account.
-
-* A 404-error page is available.
-
-
+**Week 6**
+![User Stories Progress - Week 6](assets/readme-files/user-stories-week6.png)
+![User Stories Progress - Week 6](assets/readme-files/user-stories-week6-2.png)
+***
 #### Database Model
 
 The database model has been designed using [drawsql](https://drawsql.app/). The type of database being used for the is relational database being managed using [PostgreSQL](https://www.postgresql.org/).
 
-![Code Buddy website map](assets/readme_files/db_model.png)
+![Database Model Map](assets/readme-files/database-model.png)
 
-**Question Model**
+**Campaign Model**
 
-* Title: Unique question title provided by the author.
+* *Campaign Name*: Unique Campaign name provided by the user that's logged in.
+* *Dungeon Master*: The Dungeon Master's name would be entered, it does not have to be unique.
+* *Total Players*: Intiger of a minimum of 3 and maximum of 8 players.
+* *Description*: Summernote style description field.
+* *Created On*: Auto Date and Time Field of when the campaign was created.
+***
+**Booking Venue Model**
 
-* Author: Store the author of the question as a User foreign key.
-
-* Content: Question details provided by the author.
-
-* Slug: Store a unique slug to identify the question by.
-
-* Created On: Date and time set automatically at the question's creation.
-
-* Last updated: Date and time set automatically every time the question is updated.
-
-* Votes score: Calculated score of the question's votes.
-
-**Reply Model**
-
-* Question: A foreign key from the Question model, storing the question being replied.
-
-* Author: Store the author of the reply as a User foreign key.
-
-* Body: Reply body with details provided by the author.
-
-* Created On: Date and time set automatically at the reply's creation.
-
-* Last updated: Date and time set automatically every time the reply is updated.
-
-* Votes score: Calculated score of the reply's votes.
-
-**QuestionVote Model**
-
-* Voter: Foreign key from the User model, storing the user voting the question.
-
-* Score: Score provided by the voter. The options are upvote with a value of 1 or downvote with a value of -1.
-
-* Question: A foreign key from the Question model, storing the question being voted.
-
-**ReplyVote Model**
-
-* Voter: Foreign key from the User model, storing the user voting the reply.
-
-* Score: Score provided by the voter. The options are upvote with a value of 1 or downvote with a value of -1.
-
-* Reply: A foreign key from the Reply model, storing the question being voted.
-
-
+* *Campaigns*: Choice field of the existing campaigns that the user have created.
+* *Venue*: A Choice field where the user can select the available venues.
+* *Total Players*: Intiger with a minimum of 3 and maximum of 8 players.
+* *Description*: Summernote style description field.
+***
 ### Skeleton
 
 #### Wireframes
 
-[Balsamiq](https://balsamiq.com/) has been used to showcase the appearance of the site and display the placement of the different elements whitin the pages.
+[Invision](https://www.invisionapp.com/) has been used to showcase the appearance of the site and display the placement of the different elements within the pages. It is an alternative of the typical Balsamic that Code Institute recommends, personally, I like InVision a little more since I'm used to using it in everyday life.
 
 Page | Desktop Version | Mobile Version
 --- | --- | ---
-Index / User Logged Out | ![Desktop index / user logged out wireframe image](assets/wireframes/index_dektop_logged_out.png) | ![Mobile index / user logged out wireframe image](assets/wireframes/index_mobile_logged_out.png)
+Landing Page | ![Landing Page / About Us page](assets/wireframes/wireframes-landingpage.png) | ![Landing Page / About Us page mobile](assets/wireframes/wireframes-landingpage-mobile.png)
 Sign Up | ![Desktop sign up wireframe image](assets/wireframes/signup_dektop.png) | ![Mobile sign up wireframe image](assets/wireframes/signup_mobile.png)
 Log In | ![Desktop log in wireframe image](assets/wireframes/login_dektop.png) | ![Mobile log in wireframe image](assets/wireframes/login_mobile.png)
 Index / User Logged In | ![Desktop index / user logged in wireframe image](assets/wireframes/index_dektop_logged_in.png) | ![Mobile index / user logged out wireframe image](assets/wireframes/index_mobile_logged_in.png)
