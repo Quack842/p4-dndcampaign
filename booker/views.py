@@ -25,14 +25,13 @@ class Home(generic.TemplateView):
     template_name = "index.html"
 
 
-class UpcomingCampaigns(generic.TemplateView):
+class BookvenueList(generic.ListView):
     """
     This view is used to display all booking in the browse booing page
     """
     model = BookVenue
     queryset = BookVenue.objects.order_by('-booking_date')
     template_name = 'upcoming_campaigns.html'
-    paginate_by = 8
 
 
 # To create a new Campaign
@@ -67,17 +66,6 @@ class Dashboard(FormView):
     form_class = BookForm
     success_url = '/dashboard'
 
-    def form_valid(self, form):
-        if form.is_valid():
-            form = form.save(commit=False)
-            form.user = Campaign.objects.get(id=self.request.user.id)
-            form.save()
-            messages.success(self.request,
-                             "Successfully Registered to a Venue!")
-            return super().form_valid(form)
-
-        return HttpResponse(template.render(request, context))
-
 
 class Venue(FormView):
     """ This will be the Venue Page """
@@ -88,13 +76,19 @@ class Venue(FormView):
     def form_valid(self, form):
         if form.is_valid():
             form = form.save(commit=False)
-            form.user = Campaign.objects.get(id=self.request.user.id)
+            form.user = User.objects.get(id=self.request.user.id)
             form.save()
             messages.success(self.request,
                              "Successfully Registered to a Venue!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(request, context))
+
+
+class VenueList(generic.ListView):
+    model = BookVenue
+    queryset = BookVenue.objects.order_by("-booking_date")
+    template_name = "dashboard.html"
 
 
 class Profile(generic.TemplateView):
@@ -158,7 +152,7 @@ def logout_request(request):
 # Delete Campaign
 class DeleteCampaign(View):
     def get(self, request, id):
-        """ Get question to be deleted and render a delete form """
+        """ Get Campaign to be deleted and render a delete form """
 
         queryset = Campaign.objects.all()
         campaign = get_object_or_404(queryset, id=id)
@@ -172,7 +166,7 @@ class DeleteCampaign(View):
         )
 
     def post(self, request, id):
-        """ Delete existing question """
+        """ Delete existing Campaign """
 
         queryset = Campaign.objects.all()
         campaign = get_object_or_404(queryset, id=id)
@@ -189,10 +183,10 @@ class DeleteCampaign(View):
 
 # Edit Campaign
 class EditCampaign(View):
-    """ View to allow user to edit a specific question"""
+    """ View to allow user to edit a specific Campaign"""
 
     def get(self, request, id):
-        """ Get question data and return a prefilled form """
+        """ Get Campaign data and return a prefilled form """
 
         queryset = Campaign.objects.all()
         campaign = get_object_or_404(queryset, id=id)
@@ -214,8 +208,8 @@ class EditCampaign(View):
         )
 
     def post(self, request, id):
-        """ Update existing question using the form data
-        and return to the home page
+        """ 
+        Update existing Campaign using the form data
         """
 
         queryset = Campaign.objects.all()
@@ -248,3 +242,98 @@ class EditCampaign(View):
             )
 
         return redirect("dashboard")
+
+
+# Delete Venue
+class DeleteVenue(View):
+    def get(self, request, id):
+        """ Get Venue to be deleted and render a delete form """
+
+        queryset = BookVenue.objects.all()
+        bookvenue = get_object_or_404(queryset, id=id)
+
+        return render(
+            request,
+            'delete_venue.html',
+            {
+                'bookvenue': bookvenue,
+            }
+        )
+
+    def post(self, request, id):
+        """ Delete existing Venue """
+
+        queryset = BookVenue.objects.all()
+        bookvenue = get_object_or_404(queryset, id=id)
+
+        bookvenue.delete()
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            'Your Venue has been deleted.'
+        )
+
+        return redirect("upcoming_campaigns")
+
+
+# Edit Venue
+class EditVenue(View):
+    """ View to allow user to edit a specific Venue"""
+
+    def get(self, request, id):
+        """ Get Venue data and return a prefilled form """
+
+        queryset = BookVenue.objects.all()
+        bookvenue = get_object_or_404(queryset, id=id)
+
+        data = {'campaigns': bookvenue.campaigns,
+                'venue': bookvenue.venue,
+                'booking_date': bookvenue.booking_date,
+                'booking_comments': bookvenue.booking_comments,
+                }
+        edit_form = BookForm(initial=data)
+
+        return render(
+            request,
+            'edit_venue.html',
+            {
+                'bookvenue': bookvenue,
+                'edit_form': edit_form
+            }
+        )
+
+    def post(self, request, id):
+        """
+        Update existing Venue using the form data
+        """
+
+        queryset = BookVenue.objects.all()
+        bookvenue = get_object_or_404(queryset, id=id)
+
+        edit_form = BookForm(instance=campaign, data=request.POST)
+
+        if edit_form.is_valid():
+            bookvenue.campaigns = edit_form.cleaned_data.get(
+                                     'campaigns')
+            bookvenue.venue = edit_form.cleaned_data.get(
+                                      'venue')
+            bookvenue.booking_date = edit_form.cleaned_data.get(
+                                     'booking_date')
+            bookvenue.booking_comments = edit_form.cleaned_data.get(
+                                   'booking_comments')
+            bookvenue.save()
+            messages.add_message(
+                request,
+                messages.SUCCESS,
+                'You edited your Venue successfully.'
+            )
+
+        else:
+            edit_form = BookForm()
+            messages.add_message(
+                request,
+                messages.WARNING,
+                'Your venue has not been edited.'
+            )
+
+        return redirect("upcoming_campaigns")

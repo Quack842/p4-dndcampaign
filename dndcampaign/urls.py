@@ -20,12 +20,11 @@ from booker import views
 from django.conf.urls.static import static
 from django.conf import settings
 
-app_name = 'campaigns'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Home.as_view(), name='home'),
-    path('upcomingcampaigns/', views.UpcomingCampaigns.as_view(),
+    path('upcomingcampaigns/', views.BookvenueList.as_view(),
          name='upcoming_campaigns'),
     path('createcampaign/', views.CreateCampaign.as_view(),
          name='create_campaign'),
@@ -34,9 +33,6 @@ urlpatterns = [
     path('signup/', views.register_request, name="signup"),
     path('login/', views.login_request, name="login"),
     path('logout/', views.logout_request, name="logout"),
-    path('bookvenue/', views.Dashboard.as_view(), name="bookvenue"),
-    path('createcampaign/', views.CreateCampaign.as_view(),
-         name="createcampaign"),
     path('profile/', views.Profile.as_view(), name="profile"),
     path('deletecampaign/', views.DeleteCampaign.as_view(),
          name="delete_campaign"),
@@ -50,6 +46,16 @@ urlpatterns = [
         'edit_campaign/<int:id>/',
         views.EditCampaign.as_view(),
         name='edit_campaign'
+    ),
+    path(
+        'delete_venue/<int:id>/',
+        views.DeleteVenue.as_view(),
+        name='delete_venue'
+    ),
+    path(
+        'edit_venue/<int:id>/',
+        views.EditVenue.as_view(),
+        name='edit_venue'
     ),
 
 

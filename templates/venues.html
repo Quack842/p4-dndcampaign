@@ -7,9 +7,7 @@
 <div class="container">
   <div class="card">
     <div class="card-header">
-      <div class="card-title">
-        <h1>Regions</h1>
-      </div>
+      <h1 class="card-title" style="color: #484848; margin: auto; text-align: center;">Regions</h1>
     </div>
     <div class="row">
       <!-- If View on a Laptop/Big screen Users will see the map -->
@@ -573,19 +571,21 @@
     </div>
   </div>
   {% if user.is_authenticated %}
-  <form method="POST" enctype="multipart/form-data" class="card campaign-form" style="color: #484848; margin: 50px;">
-    <div class="card-header">
-        <h1 class="card-title">Add Campaign to Venue</h1>
-    </div>
-    <div class="card-body">
-        {% csrf_token %}
-        {{ form.media }}
-        {{ form.as_p }}
-    </div>
-    <div class="card-footer">
-        <button class="btn start-button" type="submit">Create</button>
-    </div>
-</form>
+    {% if venue != True %}
+    <form method="POST" enctype="multipart/form-data" class="card campaign-form" style="color: #484848; margin-top: 30px;">
+      <div class="card-header">
+          <h1 class="card-title">Add Campaign to Venue</h1>
+      </div>
+      <div class="card-body" style="padding: 30px;">
+          {% csrf_token %}
+          {{ form.media }}
+          {{ form.as_p }}
+      </div>
+      <div class="card-footer">
+          <button class="btn start-button" type="submit">Create</button>
+      </div>
+  </form>
+  {% endif %}
 {% endif %}
 </div>
 {% endblock %}

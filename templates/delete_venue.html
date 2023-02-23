@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="card-design">
+        <h1 class="page-title" style="text-align: center;">Delete Venue</h1>
+    <!-- Delete Comment Form -->
+        <form method="POST" enctype="multipart/form-data"  action="{% url 'delete_venue' bookvenue.id %}">
+            {% csrf_token %}
+            <p class="text-center mt-3">Are you sure you want to delete {{ bookvenue.venue }}?</p>
+            <div class="row" style="text-align: center;">
+                <div class="col-md-6">
+                    <button class="btn start-button " type="submit">Yes, Delete</button>
+                </div>
+                <div class="col-md-6">
+                    <a class="btn start-button" href="{% url 'upcoming_campaigns' %}" style="background: #0640c5;
+                    background-image: linear-gradient(to bottom, #005dff, #030000);">Cancel</a>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
