@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 <!-- Messages -->
-<div class="container">
+<div class="container" id="accordion">
     {% if messages %}
     <div class="card border-danger mb-3">
         <div class="card-body text-danger">
@@ -16,14 +16,17 @@
         </div>
     </div>
     {% endif %}
-    <div class="card campaign-form">
-        <div class="card-header">
-            <h1 class="card-title" style="text-align: center;">Campaigns</h1>
-        </div>
+    <div class="card campaign-form" id="campaignCollapse">
+        <button style="background-color: none; border: none;" data-toggle="collapse" data-target="#collapseCampaign" aria-expanded="true" aria-controls="collapseCampaign">
+            <div class="card-header">
+                <h1 class="card-title" style="text-align: center;">Campaigns</h1>
+            </div>
+        </button>
     </div>
         <!-- Shows created campaigns -->
         {% for campaign in campaign_list %}
-        <div class="card-design">
+        {% if campaign.user == user %}
+        <div class="card-design collapse show" id="collapseCampaign" aria-labelledby="campaignCollapse" data-parent="#accordion">
             <div class="row">
                 <h1 class="card-main-style" id="campaign-name">{{ campaign.campaign_name }}</h1>
                 <hr>
@@ -51,22 +54,8 @@
                 </div>
             </div>
         </div>
+        {% endif %}
         {% endfor %}
-        <!-- Shows Current booked venues -->
-        <div class="card" style="margin-bottom: 10px; color: #484848;">
-            <div class="card-header">
-                <h1 class="card-title" style="text-align: center;">Campaigns Booked at Venues</h1>
-            </div>
-        </div>
-        <div class="">
-            <h4>Venue</h4>
-            <p>{{ user.bookvenue.venue }}</p>
-            <h4>Date</h4>
-            <p>{{ user.bookvenue.booking_date }}</p>
-        </div>
-        <div class="card-footer">
-            <button class="btn start-button">Edit</button>
-        </div>
     </div>
 </div>
 {% endblock %}

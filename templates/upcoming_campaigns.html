@@ -4,6 +4,17 @@
 
 {% block content %}
     <div class="container">
+        {% if messages %}
+        <div class="card border-danger mb-3">
+            <div class="card-body text-danger">
+                <h5 class="card-title" style="font-family: 'Mitr', sans-serif; text-align: center;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </h5>
+            </div>
+        </div>
+        {% endif %}
         {% for bookvenue in bookvenue_list  %}
             <div class="upcoming-style">
                 <h1 style="text-align: center;">{{ bookvenue.campaigns }}</h1>
@@ -18,12 +29,17 @@
                         <p>{{ bookvenue.booking_date }}</p>
                     </div>
                 </div>
-                <p>{{ bookvenue.booking_comments }}</p>
+                <div class="row" style="text-align: center;">
+                    <div class="col-md-12">
+                        <h2>Description</h2>
+                        <p>{{ bookvenue.booking_comments | safe }}</p>
+                    </div>
+                </div>
                 {% if user.is_authenticated and bookvenue.user == user %}
                 <div class="row" style="text-align: center;">
                     <hr>
                     <div class="col-md-6">
-                        <a class="btn start-button" href="{% url 'delete_venue' bookvenue.id %">Delete Venue</a>
+                        <a class="btn start-button" href="{% url 'delete_venue' bookvenue.id %}">Delete Venue</a>
                     </div>
                     <div class="col-md-6">
                         <a class="btn start-button" href="{% url 'edit_venue' bookvenue.id %}" style="background: #0640c5;

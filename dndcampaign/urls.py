@@ -34,8 +34,6 @@ urlpatterns = [
     path('login/', views.login_request, name="login"),
     path('logout/', views.logout_request, name="logout"),
     path('profile/', views.Profile.as_view(), name="profile"),
-    path('deletecampaign/', views.DeleteCampaign.as_view(),
-         name="delete_campaign"),
     path('summernote/', include('django_summernote.urls')),
     path(
         'delete_campaign/<int:id>/',

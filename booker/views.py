@@ -60,18 +60,11 @@ class CampaignList(generic.ListView):
     template_name = "dashboard.html"
 
 
-class Dashboard(FormView):
-    """ This will be the Dashboard Page """
-    template_name = "dashboard.html"
-    form_class = BookForm
-    success_url = '/dashboard'
-
-
 class Venue(FormView):
     """ This will be the Venue Page """
     template_name = "venues.html"
     form_class = BookForm
-    success_url = '/dashboard'
+    success_url = '/upcoming_campaigns'
 
     def form_valid(self, form):
         if form.is_valid():
@@ -86,9 +79,9 @@ class Venue(FormView):
 
 
 class VenueList(generic.ListView):
-    model = BookVenue
-    queryset = BookVenue.objects.order_by("-booking_date")
-    template_name = "dashboard.html"
+    model = Campaign
+    queryset = Campaign.objects.order_by("-created_on")
+    template_name = "venue.html"
 
 
 class Profile(generic.TemplateView):
@@ -208,7 +201,7 @@ class EditCampaign(View):
         )
 
     def post(self, request, id):
-        """ 
+        """
         Update existing Campaign using the form data
         """
 
