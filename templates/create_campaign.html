@@ -18,8 +18,8 @@
     </div>
     {% endif %}
     <div class="row">
-        <div class="middle-block col-12">
-            <h1>Create Campaign</h1>
+        <div class="card-design col-12">
+            <h1 style="text-align: center;">Create Campaign</h1>
             <form method="POST" enctype="multipart/form-data" class="campaign-form">
                 {% csrf_token %}
                 {{ form.as_p }}

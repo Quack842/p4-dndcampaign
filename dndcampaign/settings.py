@@ -35,6 +35,15 @@ DEBUG = True
 ALLOWED_HOSTS = ["p4-dndcampaign.herokuapp.com", "localhost"]
 
 
+# Summernote Customize
+
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',
+        'margin': 'auto',
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [

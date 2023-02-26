@@ -17,16 +17,14 @@
     </div>
     {% endif %}
     <div class="card campaign-form" id="campaignCollapse">
-        <button style="background-color: none; border: none;" data-toggle="collapse" data-target="#collapseCampaign" aria-expanded="true" aria-controls="collapseCampaign">
-            <div class="card-header">
-                <h1 class="card-title" style="text-align: center;">Campaigns</h1>
-            </div>
-        </button>
+        <div class="card-header">
+            <h1 class="card-title" style="text-align: center;">Campaigns</h1>
+        </div>
     </div>
         <!-- Shows created campaigns -->
         {% for campaign in campaign_list %}
         {% if campaign.user == user %}
-        <div class="card-design collapse show" id="collapseCampaign" aria-labelledby="campaignCollapse" data-parent="#accordion">
+        <div class="card-design">
             <div class="row">
                 <h1 class="card-main-style" id="campaign-name">{{ campaign.campaign_name }}</h1>
                 <hr>

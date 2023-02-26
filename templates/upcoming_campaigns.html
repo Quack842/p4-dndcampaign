@@ -16,22 +16,22 @@
         </div>
         {% endif %}
         {% for bookvenue in bookvenue_list  %}
-            <div class="upcoming-style">
+            <div class="card-design">
                 <h1 style="text-align: center;">{{ bookvenue.campaigns }}</h1>
                 <hr>
                 <div class="row" style="text-align: center;">
                     <div class="col-md-6">
-                        <h2>Venue Booked</h2>
+                        <h3>Venue Booked</h3>
                         <p>{{ bookvenue.venue }}</p>
                     </div>
                     <div class="col-md-6">
-                        <h2>Date Booked at Venue</h2>
+                        <h3>Date Booked at Venue</h3>
                         <p>{{ bookvenue.booking_date }}</p>
                     </div>
                 </div>
                 <div class="row" style="text-align: center;">
                     <div class="col-md-12">
-                        <h2>Description</h2>
+                        <h3>Description</h3>
                         <p>{{ bookvenue.booking_comments | safe }}</p>
                     </div>
                 </div>

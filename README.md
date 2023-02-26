@@ -1,4 +1,4 @@
-# Code Buddy
+# D&D Dungeon Party
 
 
 ![Code Buddy mockup images](assets/readme-files/responsive-views.png)
@@ -70,6 +70,8 @@ GitHub projects was used as my project management tool to track user stories. It
 **Week 6**
 ![User Stories Progress - Week 6](assets/readme-files/user-stories-week6.png)
 ![User Stories Progress - Week 6](assets/readme-files/user-stories-week6-2.png)
+
+[Back to top ⇧](#dd-dungeon-party)
 ***
 #### Database Model
 
@@ -91,6 +93,8 @@ The database model has been designed using [drawsql](https://drawsql.app/). The 
 * *Venue*: A Choice field where the user can select the available venues.
 * *Total Players*: Intiger with a minimum of 3 and maximum of 8 players.
 * *Description*: Summernote style description field.
+
+[Back to top ⇧](#dd-dungeon-party)
 ***
 ### Skeleton
 
@@ -101,81 +105,67 @@ The database model has been designed using [drawsql](https://drawsql.app/). The 
 Page | Desktop Version | Mobile Version
 --- | --- | ---
 Landing Page | ![Landing Page / About Us page](assets/wireframes/wireframes-landingpage.png) | ![Landing Page / About Us page mobile](assets/wireframes/wireframes-landingpage-mobile.png)
-Sign Up | ![Desktop sign up wireframe image](assets/wireframes/signup_dektop.png) | ![Mobile sign up wireframe image](assets/wireframes/signup_mobile.png)
-Log In | ![Desktop log in wireframe image](assets/wireframes/login_dektop.png) | ![Mobile log in wireframe image](assets/wireframes/login_mobile.png)
-Index / User Logged In | ![Desktop index / user logged in wireframe image](assets/wireframes/index_dektop_logged_in.png) | ![Mobile index / user logged out wireframe image](assets/wireframes/index_mobile_logged_in.png)
-Ask Question | ![Desktop ask question wireframe image](assets/wireframes/ask_question_desktop.png) | ![Mobile ask question wireframe image](assets/wireframes/ask_question_mobile.png)
-Open Question | ![Desktop open question wireframe image](assets/wireframes/question_dektop.png) | ![Mobile open question wireframe image](assets/wireframes/question_mobile.png)
-Leave Reply | ![Desktop leave reply wireframe image](assets/wireframes/leave_reply_desktop.png) | ![Mobile leave reply wireframe image](assets/wireframes/leave_reply_mobile.png)
+Register Page | ![Sign Up for Desktop](assets/wireframes/wireframes-register.png) | ![Sign Up for Mobile](assets/wireframes/wireframes-register-mobile.png)
+Log In | ![Log In for Desktop](assets/wireframes/wireframes-login.png) | ![Log In for Mobile](assets/wireframes/wireframes-login-mobile.png)
+Profile | ![Profile Desktop](assets/wireframes/wireframes-profile.png) | ![Profile Mobile](assets/wireframes/wireframes-profile-mobile.png)
+Dashboard | ![Dashboard Desktop](assets/wireframes/wireframes-dashboard.png) | ![Dashboard Mobile](assets/wireframes/wireframes-dashboard-mobile.png)
+Upcoming Campaigns | ![Upcoming Campaign Desktop](assets/wireframes/wireframes-upcomingcampaign.png) | ![Upcoming Campaign Mobile](assets/wireframes/wireframes-upcomingcampaign-mobile.png)
+Create Campaign | ![Create Campaign Desktop](assets/wireframes/wireframes-createcampaign.png) | ![Create Campaign Mobile](assets/wireframes/wireframes-createcampaign-mobile.png)
+Venue | ![Venues Desktop](assets/wireframes/wireframes-venues.png) | ![Venues Mobile](assets/wireframes/wireframes-venues-mobile.png)
 
-
+[Back to top ⇧](#dd-dungeon-party)
+***
 ### Surface
 
 #### Color Scheme
 
-![Color scheme image](assets/readme_files/color_scheme.png)
+![Color scheme image](assets/readme-files/color-scheme.png)
 
-The colors used in the website are a teal blue color (#3F778D) for secondary buttons, navbar links, as well as for main buttons and links transitions. Charcoal (#253A47) is used for the main text, footer background, main buttons and secondary buttons and links transitions.
+The Colors used in this website was inspired by the [D&D Beyond](https://www.dndbeyond.com/) website. It is a dark color scheme with red as the secondary color. I added the gold color for the borders on the buttons.
 
-A platinum (#E9EDE9) for the navigation bar and card footers background, footer and buttons content. A baby powder color (#FFFFFD) is also used in the main background and cards footer as well as for input fields.
+The Navigation bar is an almost black color (#191919), there is a dark themed background image used as a type of hero image, this image was selected from the website [Unsplash](https://unsplash.com/). The background has a mid section with a gray color (#484848), and the footer is the same color has the navigation bar. Because the website is based on a dark theme, the header, footer and where ever the backgrounds are dark, the font color is a gray-ish white #d5d5d5.
 
-The colors are were chosen keeping in mind simplicity but also providing the website a modern design. This in order to keep the focus on the content but also appealing for the users.
-
-
+Some of the buttons on the forms, have the blue color (#0640c5), personally, I think it adds a pleasent break from the dark and red theme and complements the color scheme well.
+***
 #### Typography
 
-The main font being used in the site is Nunito, with sans-serif as a fallback in case Nunito doesn't get imported correctly. Roboto, with sans-serif as a fallback is used mainly for headings and the logo has been given the Quicksand font, with sans-serif as a fallback.
+The main font being used in the site is Mitr, with sans-serif as a fallback in case Mitr doesn't get imported correctly. Russo One, with sans-serif as a fallback, is used mainly for headings. Kanit was used as a 'special' font, so it was only used on the navigation bar and the buttons.
 
-Nunito and Roboto were chosen after some research on fonts that are better for reading. Specially Nunito which has been used as main font. Quicksand was used for the logo for design purposes.
-
-[Back to top ⇧](#code-buddy)
-
-
+[Back to top ⇧](#dd-dungeon-party)
 ## Features
 
 ### General
 
-* The website has been designed from a mobile first perspective.
+* The website was originally designed for a desktop screen size.
 
-* Responsive design across all device sizes.
+* There is a responsive design for all screen sizes.
 
 * Navigation Bar
-![Code Buddy Navigation Bar image](assets/readme_files/code_buddy_navbar.png)
+![DP Navigation Bar image](assets/readme-files/navigation-bar.png)
 
-    *  Contains the main logo and section links.
-
-    * The navigation bar contains links to all sections to facilitate navigation across the site. It also has a hover effect that changes color to provide feedback to the Site User for a better user experience.
-
-* Search bar
-![Code Buddy Search Bar image](assets/readme_files/code_buddy_search_bar.png)
-
-    * Provide the Site User an input field and a Search button to be able to search for specific questions.
+    * Contains the main logo and section links.
+    * The navigation bar contains links to all sections to facilitate navigation across the site. I chose not to add a hover effect to the navigation bar as I felt like it was un needed and would be too much.
 
 * Footer
-  ![Code Buddy Footer image](assets/readme_files/code_buddy_footer.png)
+![DP Footer image](assets/readme-files/footer.png)
 
-    * The footer includes a logo and link to social media channels.
-
-
-### Home Page
-
-* Question list
-![Code Buddy Question List image](assets/readme_files/code_buddy_question_list.png)
-
-    * Display a paginated list of all the question and its relevant information for the user to identify.
-
-    * Provide the Site User with a link to the detailed question.
-
-    * Question score as well as voting possibilities for registered users is provided next to the question.
-
-    * For registered users, a Ask Question button is provided to allow the user to access the Ask Question Page to create new questions.
-
-    * Edit and Question buttons are provided for the questions the registered Site User has created.
+    * The footer includes social links to 4 different social websites. The footer resembles the design of my first project for code institute [My Perfect Holiday and Safari](https://quack842.github.io/my-perfect-holiday/)
 
 
-### About Page
+### Upcoming Campaigns Page
 
-![Code Buddy About Page image](assets/readme_files/code_buddy_about.png)
+* Upcoming Campaigns
+![DP image](assets/readme-files/upcoming-campaigns.png)
+
+    * Display a list of all the campaigns that users have created with venues.
+
+    * The user that is logged in will be able to edit and delete the venue they have created, they will not be able to edit or or delete the other campaigns.
+
+    * The user will not have to be logged in to view the upcoming campaigns.
+
+### Create Campaign
+
+![DP image](assets/readme_files/code_buddy_about.png)
 
 * Provide relevant information about the website's objective.
 
@@ -244,7 +234,7 @@ Login | Allow the Site User to sign in with their account. | ![Code Buddy Sign I
 Logout | Allow the Site User to sign out from their account. | ![Code Buddy Sign Out Page](assets/readme_files/code_buddy_sign_out.png) |
 
 
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧]()
 
 
 ## Technologies Used
