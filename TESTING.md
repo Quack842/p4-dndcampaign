@@ -1,10 +1,10 @@
-# Code Buddy Testing
+# D&D Dungeon Party Testing
 
-[Back to the README.md file](https://github.com/josswe26/code-buddy#codebuddy)  
+[Back to the README.md file](https://github.com/Quack842/p4-dndcampaign#dd-dungeon-party)  
 
-[Back to the Testing section in the README.md file](https://github.com/josswe26/code-buddy#testing)
+[Back to the Testing section in the README.md file](https://github.com/Quack842/p4-dndcampaign#testing)
 
-[View the live website here](https://django-code-buddy.herokuapp.com/)  
+[View the live website here]()  
 
 ## Table of Contents
 

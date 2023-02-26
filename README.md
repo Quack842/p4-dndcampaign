@@ -252,10 +252,10 @@ The main font being used in the site is Mitr, with sans-serif as a fallback in c
 
 ## Testing
 
-The testing documentation can be found [here](https://github.com/josswe26/code-buddy/blob/main/TESTING.md#code-buddy-testing).
+The testing documentation can be found [here](https://github.com/Quack842/p4-dndcampaign/blob/main/TESTING.md).
 
 
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
 
 ## Deployment
 

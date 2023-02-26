@@ -27,7 +27,7 @@ class Home(generic.TemplateView):
 
 class BookvenueList(generic.ListView):
     """
-    This view is used to display all booking in the browse booing page
+    This view is used to display all booking in the browse booking page
     """
     model = BookVenue
     queryset = BookVenue.objects.order_by('-booking_date')
@@ -79,9 +79,8 @@ class Venue(FormView):
 
 
 class VenueList(generic.ListView):
-    model = Campaign
-    queryset = Campaign.objects.order_by("-created_on")
-    template_name = "venue.html"
+    model = BookVenue
+    template_name = "venues.html"
 
 
 class Profile(generic.TemplateView):
