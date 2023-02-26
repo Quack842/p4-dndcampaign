@@ -204,6 +204,9 @@ h1, h2, h4, h5 {
     background-color: #2f2f2ff3;
 }
 /* Venue */
+.table {
+    color: #d5d5d5;
+}
 @media screen and (max-width: 980px) {
     .map-venue {
         display: none;

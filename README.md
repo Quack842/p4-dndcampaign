@@ -137,105 +137,56 @@ The main font being used in the site is Mitr, with sans-serif as a fallback in c
 ### General
 
 * The website was originally designed for a desktop screen size.
-
 * There is a responsive design for all screen sizes.
-
 * Navigation Bar
+
 ![DP Navigation Bar image](assets/readme-files/navigation-bar.png)
 
-    * Contains the main logo and section links.
-    * The navigation bar contains links to all sections to facilitate navigation across the site. I chose not to add a hover effect to the navigation bar as I felt like it was un needed and would be too much.
+* Contains the main logo and section links.
+* The navigation bar contains links to all sections to facilitate navigation across the site. I chose not to add a hover effect to the navigation bar as I felt like it was un needed and would be too much.
 
 * Footer
 ![DP Footer image](assets/readme-files/footer.png)
 
-    * The footer includes social links to 4 different social websites. The footer resembles the design of my first project for code institute [My Perfect Holiday and Safari](https://quack842.github.io/my-perfect-holiday/)
+* The footer includes social links to 4 different social websites. The footer resembles the design of my first project for code institute [My Perfect Holiday and Safari](https://quack842.github.io/my-perfect-holiday/)
 
 
 ### Upcoming Campaigns Page
 
-* Upcoming Campaigns
 ![DP image](assets/readme-files/upcoming-campaigns.png)
 
-    * Display a list of all the campaigns that users have created with venues.
+* Display a list of all the campaigns that users have created with venues.
+* The user that is logged in will be able to edit and delete the venue they have created, they will not be able to edit or or delete the other campaigns.
+* The user will not have to be logged in to view the upcoming campaigns.
+* The venues that was booked with campaigns, will be displayed with the most recent date at the top.
 
-    * The user that is logged in will be able to edit and delete the venue they have created, they will not be able to edit or or delete the other campaigns.
+### Create Campaign Page
 
-    * The user will not have to be logged in to view the upcoming campaigns.
+![DP create campaign image](assets/readme-files/create-campaign.png)
 
-### Create Campaign
+* User will be able to create a campaign on this page.
+* User will have to give a unique name for their campaign.
+* There can be a minimum of 3 and a maximum of 8 players
+* The user will be able to leave a comment/details about the campaign if they want to.
 
-![DP image](assets/readme_files/code_buddy_about.png)
+### Venues Page
+![Venues Page - Venue Views](assets/readme-files/venue-views.png)
+![Venues Page - Book a venue](assets/readme-files/book-a-venue.png)
 
-* Provide relevant information about the website's objective.
+* The user will be able to interact with the map (When on Desktop) and view all the available venues at each country that has a color.
+* When the user wants to book a venue with their campaign, they will be able to select one of the available venues.
+* After selecting a venue, user will then be able to select one of the campaigns they have created.
+* Users will be able to select the date they want to book the venue.
 
+### Dashbaord Page
+![Code Buddy Question Detail Page image](assets/readme-files/dashboard-view.png)
 
-### Search Results Page
-![Code Buddy About Page image](assets/readme_files/code_buddy_search_results.png)
+* The user will be able to view all the campaigns they have created on the dashboard.
+* The user will have the option to edit the campaigns with a form.
+* The user will have the option to delete their campaigns.
 
-* Display information about the Search being handled
-
-* Display a paginated list of the questions matching the search and its relevant information for the user to identify.
-
-
-### Question Detail Page
-![Code Buddy Question Detail Page image](assets/readme_files/code_buddy_question_detail.png)
-
-* Display the full question a well as a list of its replies.
-
-* Question and reply scores as well as voting possibilities for registered users is provided next to each item.
-
-* For registered users, a Leave Reply button is provided to allow the user to access the Leave Reply page to create a new reply to the question.
-
- * Edit and Question buttons are provided for the questions and replies the registered Site User has created.
-
-
-### Ask Question Page
-![Code Buddy Ask Question Page](assets/readme_files/code_buddy_ask_question.png)
-
-* Provide a form to allow registered Site Users to create a new question.
-
-### Leave Reply Page
-![Code Buddy Leave Reply Page](assets/readme_files/code_buddy_leave_reply.png)
-
-* Provide a form to allow registered Site Users to create a new reply to the questions.
-
-
-### Edit Question Page
-![Code Buddy Edit Question Page](assets/readme_files/code_buddy_edit_question.png)
-
-* Provide a prepopulated form to allow the Site User to edit a question they created.
-
-
-### Delete Question Page
-![Code Buddy Edit Question Page](assets/readme_files/code_buddy_delete_question.png)
-
-* Provide a form to allow the Site User to delete a question they created.
-
-
-### Edit Reply Page
-![Code Buddy Edit Question Page](assets/readme_files/code_buddy_edit_reply.png)
-
-* Provide a prepopulated form to allow the Site User to edit a reply they created.
-
-
-### Delete Reply Page
-![Code Buddy Edit Question Page](assets/readme_files/code_buddy_delete_reply.png)
-
-* Provide a form to allow the Site User to delete a reply they created.
-
-
-### Authentication Pages
-
-Page | Purpose | Image |
---- | --- | --- |
-Register | Allow the Site User to sign up an account for the website. | ![Code Buddy Sign Up Page](assets/readme_files/code_buddy_sing_up.png) |
-Login | Allow the Site User to sign in with their account. | ![Code Buddy Sign In Page](assets/readme_files/code_buddy_sign_in.png) |
-Logout | Allow the Site User to sign out from their account. | ![Code Buddy Sign Out Page](assets/readme_files/code_buddy_sign_out.png) |
-
-
-[Back to top ⇧]()
-
+[Back to top ⇧](#dd-dungeon-party)
+***
 
 ## Technologies Used
 
@@ -245,93 +196,59 @@ Logout | Allow the Site User to sign out from their account. | ![Code Buddy Sign
 * [CSS3](https://en.wikipedia.org/wiki/CSS)
 * [JavaScript](https://en.wikipedia.org/wiki/JavaScript)
 * [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
-
-
+***
 ### Libraries and Frameworks
 
 * [Django](https://www.djangoproject.com/)   
     * Django was used as web framework.
-
 * [Django Template](https://jinja.palletsprojects.com)  
     * Django Template was used as a templating language for Django to display backend data to HTML.
-   
-* [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
+* [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)  
     * Bootstrap 5 was used throughout the website to help with styling and responsiveness.
-
 * [Google Fonts](https://fonts.google.com)  
     * Google fonts was used to import the fonts into the html file, and were used on all parts of the site.
-
 * [Font Awesome](https://fontawesome.com)  
-    * Font Awesome was used throughout the website to add icons for aesthetic and UX purposes. 
-
-* [jQuery 3.6.0](https://jquery.com/)  
-    * jQuery was used as a JavaScript library to help writing less JavaScript code.  
-
-
+    * Font Awesome was used throughout the website to add icons for aesthetic and UX purposes.
+***
 ### Packages / Dependecies Installed
-
 * [Django Allauth](https://django-allauth.readthedocs.io/en/latest/)  
     * Django Allauth was used for user authentication, registration, and account management.
-
 * [Django Crispy Form](https://django-crispy-forms.readthedocs.io/en/latest/)   
     * Django Crispy Form was used to control the rendering of the forms. 
- 
 * [Gunicorn](https://gunicorn.org/)  
     * Gunicorn was used as Python WSGI HTTP Server for UNIX to support the deployment of Django application.  
-
 * [Summernote](https://summernote.org/) 
     * Summernote has been used as WYSIWYG editor.
-
 * [Cloudinary](https://cloudinary.com/)
     * Cloudinary has been used as image management solution
-
+***
 ### Database Management
 * [Heroku Postgres](https://www.heroku.com/postgres)   
     * Heroku Postgres database was used in production, as a service based on PostgreSQL provided by Heroku.
-
-
+***
 ### Tools and Programs
-
-* [Git](https://git-scm.com)  
-    * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub. 
-
 * [GitPod](https://gitpod.io/)
-     * GitPod was used for writing code, committing, and then pushing to GitHub.
-
+    * GitPod was used for writing code, committing, and then pushing to GitHub.
 * [GitHub](https://github.com)  
-   GitHub was used to store the projects code after being pushed from Git. 
-
+    * GitHub was used to store the projects code after being pushed from Git. 
 * [Heroku](https://www.heroku.com)   
     * Heroku was used to deploy the website.
-
 * [Am I Responsive](ami.responsivedesign.is)  
     * Am I Responsive was used to preview the website across a variety of popular devices.
-
-* [Tiny PNG](https://tinypng.com)    
-    * Tiny PNG was used to reduce the file size of the images.
-
-* [Coolors](https://coolors.co)  
-    * Coolors was used to create a color scheme for the website.
-
-* [Balsamiq](https://balsamiq.com/)
-     * Balsamiq was used to create the wireframes during the design phase of the project
-
+* [Invision](https://www.invisionapp.com/)
+    * Invision was used to create the wireframes during the design phase of the project. It is an alternative to the Balsamic app that code Institute recommend.
 * [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
     * Chrome DevTools was used during development process for code review and to test responsiveness.
-
 * [W3C Markup Validator](https://validator.w3.org/)
     * W3C Markup Validator was used to validate the HTML code.
-
 * [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
     * W3C CSS Validator was used to validate the CSS code.
-
 * [JSHint](https://jshint.com/) 
     * The JSHints JavaScript Code Quality Tool was used to validate the site's JavaScript code.
-
 * [Favicon.cc](https://www.favicon.cc/) 
     * Favicon.cc was used to create the site favicon.
 
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
 
 ## Testing
 
