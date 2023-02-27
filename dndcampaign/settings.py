@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'dndcampaign.wsgi.application'
 # }
 
 DATABASES = {
-   'default': dj_database_url.parse(os.environ.get('HEROKU_POSTGRESQL_COPPER_URL'))
+   'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
