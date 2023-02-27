@@ -9,7 +9,7 @@ body {
 h1, h2, h4, h5 {
     font-family: 'Russo One', sans-serif;
 }
-/* Navbar Styles */
+/* Navbar style */
 .navbar {
     font-family: 'Kanit', sans-serif;
     font-weight: 400;
@@ -29,7 +29,7 @@ h1, h2, h4, h5 {
 #navbarSupportedContent {
     margin: 0 30px;
 }
-/* Landing Page Styles */
+/* Landing Page style */
 .container {
     padding-top: 10%;
 }

@@ -223,7 +223,7 @@ Page | Lighthouse Report |
 
 ### [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
 
-Chrome DevTools was used during the development process to test, explore and modify HTML elements and CSS styles used in the project.
+Chrome DevTools was used during the development process to test, explore and modify HTML elements and CSS style used in the project.
 
 
 ### Responsiveness
