@@ -6,8 +6,6 @@ from django.db import models
 from .models import Campaign, BookVenue
 from django_summernote.widgets import SummernoteWidget
 from django.contrib.auth.forms import AuthenticationForm
-from phonenumber_field.formfields import PhoneNumberField
-from phonenumber_field.phonenumber import PhoneNumber
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
