@@ -8,20 +8,36 @@ The D&D Campaign Party is a website created to allow users to Create a campaign 
 Users will also be able to view all the upcoming campaigns that the users have created. The user will not have to log in or create an account to view these campaigns, however, the user will have to create or login to an account to book a venue.
 
 If the user have created an account, they will have access to creating a campaign, booking a venue. The users will also be able to view, edit and delete the campaigns and venues that they have created.
-
-Visit the deployed website [here]().
-
-
+***
+**PLEASE NOTE**
+Because of deployment issues, the side does not show the static files. This deloyment issue is explained in the TESING.md File.
+Visit the deployed website [here](https://p4-dndcampaign.herokuapp.com/).
+***
 ## Table of Contents
 
 1. [User Experience (UX)](#user-experience-ux)
     1. [Strategy](#strategy)
-        1. [Project Goals](#project-goals)
-        2. [User Goals](#user-goals)
-        3. [Strategy Table](#strategy-table)
-        
-s
-
+        * [Project Goals](#project-goals)
+        * [User Goals](#user-goals)
+    2. [User Stories](#user-stories)
+    3. [Skeleton](#skeleton)
+    4. [Surface](#surface)
+    5. [Features](#features)
+        * [General](#general)
+        * [Upcoming Campaigns](#upcoming-campaigns-page)
+        * [Create Campaigns](#create-campaign-page)
+        * [Venues](#venues-page)
+        * [Dashboard](#dashbaord-page)
+    6. [Technologies Used](#technologies-used)
+        * [Languages Used](#languages-used)
+        * [Libraries and Frameworks](#libraries-and-frameworks)
+        * [Packages / Dependecies Installed](#packages--dependecies-installed)
+        * [Database Management](#database-management)
+        * [Tools and Programs](#tools-and-programs)
+    7. [Testing](#testing)
+    8. [Deployment](#deployment)
+    9. [Finished Product](#finished-product)
+    10. [Credits](#credits)
 ***
 
 ## User Experience (UX)
@@ -296,108 +312,46 @@ To deploy this page to Heroku from its GitHub repository, the following steps we
     - Go to Deploy tab on Heroku and connect to the GitHub, then to the required recpository.
     Click on Delpoy Branch and wait for the build to load. When the build is complete, the app can be opened through Heroku.
 
-### Forking the Repository
-By forking the GitHub Repository we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository by using the following steps...
-
-1. Log into [GitHub](https://github.com/login) or [create an account](https://github.com/join).
-2. Locate the [GitHub Repository](https://github.com/josswe26/code-buddy).
-3. At the top of the repository, on the right side of the page, select "Fork"
-4. You should now have a copy of the original repository in your GitHub account.
-
-### Creating a Clone
-How to run this project locally:
-1. Install the [GitPod Browser](https://www.gitpod.io/docs/browser-extension/ "Link to Gitpod Browser extension download") Extension for Chrome.
-2. After installation, restart the browser.
-3. Log into [GitHub](https://github.com/login "Link to GitHub login page") or [create an account](https://github.com/join "Link to GitHub create account page").
-2. Locate the [GitHub Repository](https://github.com/josswe26/code-buddy).
-5. Click the green "GitPod" button in the top right corner of the repository.
-This will trigger a new gitPod workspace to be created from the code in github where you can work locally.
-
-How to run this project within a local IDE, such as VSCode:
-
-1. Log into [GitHub](https://github.com/login) or [create an account](https://github.com/join).
-2. Locate the [GitHub Repository](https://github.com/josswe26/code-buddy).
-3. Under the repository name, click "Clone or download".
-4. In the Clone with HTTPs section, copy the clone URL for the repository.
-5. In your local IDE open the terminal.
-6. Change the current working directory to the location where you want the cloned directory to be made.
-7. Type 'git clone', and then paste the URL you copied in Step 3.
-```
-git clone https://github.com/josswe26/code-buddy
-```
-8. Press Enter. Your local clone will be created.
-
-Further reading and troubleshooting on cloning a repository from GitHub [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
-
-
-
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
 
 ## Finished Product
 
 Page | Desktop | Mobile |
 --- | --- | --- |
-| Home | ![Desktop Home Page image](assets/readme_files/desktop_home.png) | ![Mobile Home Page image ](assets/readme_files/mobile_home.png) |
-| About | ![Desktop About Page image](assets/readme_files/desktop_about.png) | ![Mobile About Page image](assets/readme_files/mobile_about.png) |
-| Search Results | ![Desktop Search Results Page image](assets/readme_files/desktop_search_results.png) | ![Mobile Search Results Page image](assets/readme_files/mobile_search_results.png) |
-| Question Detail |![Desktop Question Detail Page image](assets/readme_files/desktop_question_detail.png) | ![Mobile Question Detail Page image](assets/readme_files/mobile_question_detail.png) |
-| Ask Question |![Desktop Ask Question Page image](assets/readme_files/desktop_ask_question.png) | ![Mobile Ask Question Page image](assets/readme_files/mobile_ask_question.png) |
-| Leave Reply |![Desktop Leave Reply Page image](assets/readme_files/desktop_leave_reply.png) | ![Mobile Leave Reply Page image](assets/readme_files/mobile_leave_reply.png) |
-| Edit Question | ![Desktop Edit Question Page image](assets/readme_files/desktop_edit_question.png) | ![Mobile Edit Question Page image](assets/readme_files/mobile_edit_question.png) |
-| Delete Question |![Desktop Delete Question Page image](assets/readme_files/desktop_delete_question.png) | ![Mobile Delete Question Page image](assets/readme_files/mobile_delete_question.png) |
-| Edit Reply |![Desktop Edit Reply Page image](assets/readme_files/desktop_edit_reply.png) | ![Mobile Edit Reply Page image](assets/readme_files/mobile_edit_reply.png) |
-| Delete Reply |![Desktop Delete Reply Page image](assets/readme_files/desktop_delete_reply.png) | ![Mobile Delete Reply Page imag](assets/readme_files/mobile_delete_reply.png) |
+| Landing Page | ![Landing Page image](assets/readme-files/desktop-home.png) | ![Mobile Home Page image ](assets/readme-files/mobile-home.png) |
+| Upcoming Campaigns | ![Upcoming Campaigns image](assets/readme-files/desktop-upcoming-campaigns.png) | ![Upcoming Campaigns image](assets/readme-files/mobile-upcoming-campaigns.png) |
+| Upcoming Campaigns edit | ![Upcoming Campaigns edit image](assets/readme-files/desktop-upcoming-campaigns-edit.png) | ![Upcoming Campaigns edit image](assets/readme-files/mobile-upcoming-campaigns-edit.png) |
+| Upcoming Campaigns Delete | ![Upcoming Campaigns Delete image](assets/readme-files/desktop-upcoming-campaigns-delete.png) | ![Upcoming Campaigns Delete image](assets/readme-files/mobile-upcoming-campaigns-delete.png) |
+| Venues | ![Venues image](assets/readme-files/desktop-venues.png) | ![Upcoming Campaigns image](assets/readme-files/mobile-venues.png) |
+| Create Campaign | ![Create Campaign image](assets/readme-files/desktop-createcampaign.png) | ![Create Campaign image](assets/readme-files/mobile-createcampaign.png) |
+| Create Campaign edit | ![Create Campaign edit image](assets/readme-files/desktop-createcampaign-edit.png) | ![Create Campaign image](assets/readme-files/mobile-createcampaign-edit.png) |
+| Create Campaign delete | ![Create Campaign delete image](assets/readme-files/desktop-createcampaign-delete.png) | ![Create Campaign delete image](assets/readme-files/mobile-createcampaign-delete.png) |
+| Profile | ![profile image](assets/readme-files/desktop-profile.png) | ![Profile image](assets/readme-files/mobile-profile.png) |
+| Dashboard | ![Dashboard image](assets/readme-files/desktop-dashboard.png) | ![Dashboard image](assets/readme-files/mobile-dashboard.png) |
 | Sign Up |![Desktop Sign Up Page image](assets/readme_files/desktop_sign_up.png) | ![Mobile Sign Up Page image](assets/readme_files/mobile_sign_up.png) |
 | Sign In |![Desktop Sing In Page image](assets/readme_files/desktop_login.png) | ![](assets/readme_files/mobile_login.png) |
 | Sign Out |![Desktop Sign Out Page image](assets/readme_files/desktop_logout.png) | ![Mobile Sign Out Page image](assets/readme_files/mobile_logout.png) |
-| 404 Error |![Desktop 404 Error Page image](assets/readme_files/desktop_404.png) | ![Mobile 404 Error Page image](assets/readme_files/mobile_404.png) |
 
 
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
 
 ## Credits
 
-### Content
-
-* Website content was written by the developer.
-* Example questions and replies were taken from [Stack Overflow](https://stackoverflow.com/)-
-
-### Media
-
-* [Pexels](https://www.pexels.com/)
-
-    * About Page image: Taken by [Buro Millennial](https://www.pexels.com/@buro-millennial-636760/).
-
-* [Unsplash](https://unsplash.com/)
-
-    * 404 Error Page image: Taken by [Tai Bui](https://unsplash.com/@agforl24).
-
 ### Code
 
-* [Stack Overflow](https://stackoverflow.com/) and [W3Schools](https://www.w3schools.com/) were consulted on a regular basis for inspiration and sometimes to be able to better understand the code being implement.
+* Stack Overflow
+* [Booking system](https://blog.devgenius.io/django-tutorial-on-how-to-create-a-booking-system-for-a-health-clinic-9b1920fc2b78)
+* [Date Picker](https://github.com/monim67/django-flatpickr)
+* [HTML Image Maping](https://www.w3schools.com/html/html_images_imagemap.asp)
+* [Area coordinator](https://www.w3schools.com/tags/att_area_coords.asp)
 
-* Message implementation an dismissal code is taken from [Code Institute](https://codeinstitute.net/)'s django-blog project.
 
-[Back to top ⇧](#code-buddy)
-
-## Known Bugs
-
-* Upvote/downvote button selection stay the same for all users. This do to an error in the logic. Even though the developer has an idea on how to solve the issue. The solution is yet to be implemented due lack of time.
-
-* The same applies for pagination is Search Results page which is currently not working.
-
-* A known issue with Summernote field validation is present in the project. An invalid form will be posted if the field is empty. A message will however be displayed, informing the user that there has been a problem with the submission.
-
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
 
 ## Acknowledgements
 
-* My partner, for her unconditional love, help and continued support in all aspects of life, specially when I did not have time for anything else than to work with this project. You made it possible!
+* All the tutor, that helped with the project and fixed bugs (Named at the top)
+* josswe26, and his README file that helped me get a layout and what to put in my README and TESTING Files
 
-* My friend, Miguel, for being always there to help, no matter what time of the day.
 
-* My tutor, Marcel, for his invaluable support, feedback and guidance through the whole process.
-
-* Code Institute and its amazing Slack community for their support and providing me with the necessary knowledge to complete this project.
-
-[Back to top ⇧](#code-buddy)
+[Back to top ⇧](#dd-dungeon-party)
