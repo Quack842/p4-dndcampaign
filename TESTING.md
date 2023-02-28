@@ -9,14 +9,31 @@
 # NOTE** 
 Unfortunatly, the website is not live on Heroku because the build kept failing.
 
+I am extremely greatful for the help and time these tutors spend spend on me to try and solve this, It is a shame we coulnd't end up solving the issue. 
+
 When deplaying to Heroku, I kept getting a 'etag' KeyError.
 The 4 different Tutors who tried to help me:
 1. Sean
-2. Oisin
-3. Martin
-4. Ed
+2. Ed
+3. Oisen
+4. Martin
 
-To see what we have tried to solve this error, click [here](#)
+The follwong was done to try and resolve this build error:
+
+| Tutor Suggestion | Steps tooked |
+| --- | --- |
+| ![Sean first suggestion ](assets/testing-files/sean-etag-explained.png) | I did exactly as told, deleted all the files on Cloudinary and re-build on Heroku, unfortunatly, It didn't work |
+| ![Sean asked if Heroku DISABLE_COLLECTSTATS was deleted](assets/testing-files/sean-cloudinary-collectstatic-enabled.png) | Next Sean asked if the DISABLE_COLLECTSTATS in the cvars was deleted, and It already was. ![Heroku cvars](assets/testing-files/heroku-cvars.png)
+| ![Sean asked if sure deleted ](assets/testing-files/sean-sure-deleted.png) | Next Sean tried to run himself on my gitpod that I shared to allow him to help me, I ensure to him that I deleted the files by explaining how I did it and I sent him a screenshot if the Cloudinary with no files in. He got the same error. He sugested to try and deploy again, however, he could see himself that it failed again |
+| ![Delete Cloudinary account ](assets/testing-files/delete-cloudinary-account.png) | Sean was very apologetic to say that the only other solution was to delete my cloudinary account and create a new key. I did as told and deleted my cloudinary account that was logged to my github account, and created a new account with a different email address. How ever, this still didn't fix the problem and errorKey |
+| ![Ed Staticfiled Suggestion ](assets/testing-files/ed-staticfiles.png) | Next to struggle with me was Ed, he suggested that I add a ", " after the staic file. I did as told, as still 'etag' error |
+| ![Ed setting play around ](assets/testing-files/ed-testing-setting-file.png) | Ed asked if he could try something in the settings.py file and see if he could figure something out and help, but to no avail. |
+| ![Ed cloudinary at fault ](assets/testing-files/ed-cloudinary-env-file-fault.png) | Ed explained after examining my code, that he is very sure that the code was not at fault and that it might be cloudinary or the env.y file. |
+| ![Ed Next suggestion ](assets/testing-files/ed-new-suggestion.png) | Because Ed suspected cloudinary and/env.py was at fault, he suggested the follwing solution. I did exatly as he told me in order. I added the DISABLE_COLLECTSTATS back into the cvars, created a new account with a different email as the second time I had to re-create an account, copied the CLOUDINARY_URL to ensure no spelling errors, and pasted that into the heroku cvars. After that a re-deployed, to which it was a successful build because the DISABLE_COLLECTSTATS was still in the cvars, so i removed the DISABLE_COLLECTSTATS from the cvars. Still got the etag error.  |
+| ![Ed ensures ](assets/testing-files/ed-ensure-url.png) | Ed was crestfallen by the result, as was I. He asked if I'm sure that I added the URL to the cvars, to which I send him a screenshot of the cloudinary url as I was ensured by Ed that there was not securety risk, we jus twanted to find a solution to this build error. He confirmed that the CLOUDINARY_URL's are the same on cludinary and cvars.  |
+| ![Ed heroku Login ](assets/testing-files/ed-heroku-login.png) | Ed asked if I could log into my heroku account via the terminal on my code so he could do some testing and see if he could find any extra information on the issue. He also helped me on how to log into Herkou via termin as I had MFA enabled. |
+| ![Ed Apologised ](assets/testing-files/ed-heroku-login.png) | Ed apologised for the fact that I'm going through this annoying build failure, and said that he would need to ask a wider team fir suggestions. |
+| ![Oisin Suggested Runtime file ](assets/testing-files) | Ed apologised for the fact that I'm going through this annoying build failure, and said that he would need to ask a wider team fir suggestions. |
 
 
 ## Table of Contents
@@ -68,62 +85,56 @@ W3C Markup Validator found the following errors concerning index.html.
 
 ![index.html validation errors image](assets/testing-files/html-validator-error.png)
 
-The errors were solved by re-entering the p tag, as I don't a missing start p tag.
+The errors could not be resolved because on the validator it shows that there is a closing tag with no opening tag, but that is not the case. As seen in image below.
 
-![index.html validation]()
+![index.html validation errors image](assets/testing-files/html-validator-code.png)
 ***
 ### CSS
 
 [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) service was used to validate the CSS code of the project in order to ensure there were no syntax errors. 
 
 Because My static file aren't showing with Cloudinary, I had to copy and paste the text into the validator with direct Input.
-There was not error.
+There was not errors.
 
 ![index.html validation](assets/testing-files/css-validator.png)
-
+***
 ### Pyhton
 
 Pylint was used continuously during the development process to analyze the Python code for programming errors.
 
-[PEP8 online](http://pep8online.com/) was further used to validate the Python code to validate the Python code for PEP8 requirements. See below the validation results and the reviewed results. 
-
+[Python Checker](https://www.pythonchecker.com/) was further used to validate the Python code to validate the Python code for PEP8 requirements. See below the validation results and the reviewed results. Unfortunalty because the Original PEP8 Online doesn't work anymore, the warnings on this python checker website, does not use the django python formatting. So most of the warning suggest useing spaces where it is not to be used in the code. (Can be seen in images below) 
 
 | Location | Errors / Warnings | Code Reviewed |
 | --- | --- | --- |
-| ./question/admin.py | No errors / warnings |![admin.py code reviewed image](assets/testing_files/pep8_admin.png) |
-| ./question/forms.py | ![forms.py errors/warnings image](assets/testing_files/pep8_forms_errors.png) | ![forms.py code reviewed image](assets/testing_files/pep8_forms_reviewed.png) |
-| ./question/models.py | ![models.py errors/warnings image](assets/testing_files/pep8_models_errors.png) | ![models.py code reviewed image](assets/testing_files/pep8_models_reviewed.png) |
-| ./question/urls.py | ![urls.py errors/warnings image](assets/testing_files/pep8_urls_errors.png) | ![urls.py code reviewed image](assets/testing_files/pep8_urls_reviewed.png) |
-| ./question/views.py | ![views.py errors/warnings image](assets/testing_files/pep8_views_errors.png) | ![views.py code reviewed image](assets/testing_files/pep8_views_reviewed.png) |
+| ./booker/admin.py | No errors / warnings | ![admin.py code reviewed image](assets/testing-files/pip8-admin.png) |
+| ./booker/forms.py | 24 'warnings' | ![forms.py code reviewed image](assets/testing-files/form-validator.png) |
+| ./booker/models.py | 28 'warnings' | ![models.py code reviewed image](assets/testing-files/models-validator.png) |
+| ./booker/views.py | No errors / warnings | ![views.py code reviewed image](assets/testing-files/views-validator.png) |
 
-
+***
 ### JavaScript
 
 [JSHints JavaScript Code Quality Tool](https://jshint.com/) was used to validate the site's JavaScript code. 
 
 No errors were found.
-
+***
 
 ## Accessibility
 
-Lighthouse in Chrome DevTools has been used to confirm that the colors and fonts being used throughout the website are easy to read and accessible. See reports in the table below:
+Lighthouse in Chrome DevTools has been used to confirm that the colors and fonts being used throughout the website are easy to read and accessible. 
+Testing was done on Local run as the heroku deployed build failed.
+See reports in the table below:
 
 ### Lighthouse Reports
 
 Page | Lighthouse Report |
 | --- | --- |
-| Index | ![Index Lighthouse Report](assets/testing_files/lighthouse_index.jpg) |
-| About | ![About Lighthouse Report](assets/testing_files/lighthouse_about.jpg) |
-| Register | ![Register Lighthouse Report](assets/testing_files/lighthouse_signup.jpg) |
-| Login | ![Login Lighthouse Report](assets/testing_files/lighthouse_login.jpg) |
-| Logout | ![Logout Lighthouse Report](assets/testing_files/lighthouse_logout.jpg) |
-| Question Detail !| ![Question Detail Lighthouse Report](assets/testing_files/lighthouse_question_detail.jpg) |
-| Ask Question | ![Ask Question Lighthouse Report](assets/testing_files/lighthouse_ask_question.jpg) |
-| Leave Reply | ![Leave Reply Lighthouse Report](assets/testing_files/lighthouse_leave_reply.jpg) |
-| Edit Question | ![Edit Question Lighthouse Report](assets/testing_files/lighthouse_edit_question.jpg) |
-| Delete Question | ![Delete Question Lighthouse Report](assets/testing_files/lighthouse_delete_question.jpg) |
-| Edit Reply | ![Edit Reply Lighthouse Report](assets/testing_files/lighthouse_edit_reply.jpg) |
-| Delete Reply | ![Delete Reply Lighthouse Report](assets/testing_files/lighthouse_delete_reply.jpg) |
+| Landing Page | ![Landing Page Lighthouse Report](assets/testing-files/lighthouse-home.png) |
+| Upcoming Campaigns | ![Upcoming Campaigns Lighthouse Report](assets/testing-files/lighthouse-upcoming.png) |
+| Venues Page | ![Venues Page Lighthouse Report](assets/testing-files/lighthouse-venues.png) |
+| Create Campaign Page | ![Create Campaign Page Lighthouse Report](assets/testing-files/lighthouse-createcampaign.png) |
+| Profile Page | ![Profile Page Lighthouse Report](assets/testing-files/lighthouse-profile.png) |
+| Dashboard Page | ![Dashboard Page Lighthouse Report](assets/testing-files/lighthouse-dashboard.png) |
 
 
 ## Tools Testing
