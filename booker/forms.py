@@ -4,8 +4,6 @@ from django_flatpickr.widgets import DatePickerInput, DateTimePickerInput
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django_summernote.widgets import SummernoteWidget
-from phonenumber_field.formfields import PhoneNumberField
-from phonenumber_field.phonenumber import PhoneNumber
 from .models import BookVenue, Campaign
 
 
