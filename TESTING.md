@@ -6,9 +6,6 @@
 
 [View the live website here]()
 
-# NOTE** 
-Unfortunatly, the website is not live on Heroku because of deployment issues.
-
 I am extremely greatful for the help and time these tutors spend spend on me to try and solve this, It is a shame we coulnd't end up solving the issue. 
 
 When deplaying to Heroku, I kept getting a 'etag' KeyError.
@@ -16,6 +13,7 @@ The 4 different Tutors who tried to help me:
 1. Sean
 2. Ed
 3. Oisin
+4. Kevin
 
 The follwong was done to try and resolve this build error:
 
@@ -168,3 +166,6 @@ Safari | No appearance, responsiveness nor functionality issues. | <span style="
 Mozilla Firefox | No responsiveness nor functionality issues.| <span style="color:green">Pass</span> |
 Microsoft Edge | No appearance, responsiveness nor functionality issues. | <span style="color:green">Pass</span> |
 ***
+
+EXTA NOTE 
+Too late to put in, but the project was fixed!! The problem was a & sign in the image

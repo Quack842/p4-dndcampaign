@@ -9,10 +9,6 @@ Users will also be able to view all the upcoming campaigns that the users have c
 
 If the user have created an account, they will have access to creating a campaign, booking a venue. The users will also be able to view, edit and delete the campaigns and venues that they have created.
 ***
-**PLEASE NOTE**
-Because of deployment issues, the side does not show the static files. This deloyment issue is explained in the TESING.md File.
-Visit the deployed website [here](https://p4-dndcampaign.herokuapp.com/).
-***
 ## Table of Contents
 
 1. [User Experience (UX)](#user-experience-ux)
