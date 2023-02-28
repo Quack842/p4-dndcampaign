@@ -319,18 +319,13 @@ To deploy this page to Heroku from its GitHub repository, the following steps we
 Page | Desktop | Mobile |
 --- | --- | --- |
 | Landing Page | ![Landing Page image](assets/readme-files/desktop-home.png) | ![Mobile Home Page image ](assets/readme-files/mobile-home.png) |
-| Upcoming Campaigns | ![Upcoming Campaigns image](assets/readme-files/desktop-upcoming-campaigns.png) | ![Upcoming Campaigns image](assets/readme-files/mobile-upcoming-campaigns.png) |
-| Upcoming Campaigns edit | ![Upcoming Campaigns edit image](assets/readme-files/desktop-upcoming-campaigns-edit.png) | ![Upcoming Campaigns edit image](assets/readme-files/mobile-upcoming-campaigns-edit.png) |
-| Upcoming Campaigns Delete | ![Upcoming Campaigns Delete image](assets/readme-files/desktop-upcoming-campaigns-delete.png) | ![Upcoming Campaigns Delete image](assets/readme-files/mobile-upcoming-campaigns-delete.png) |
+| Upcoming Campaigns | ![Upcoming Campaigns image](assets/readme-files/desktop-upcomingcampaigns.png) | ![Upcoming Campaigns image](assets/readme-files/mobile-upcomingcampaigns.png) |
 | Venues | ![Venues image](assets/readme-files/desktop-venues.png) | ![Upcoming Campaigns image](assets/readme-files/mobile-venues.png) |
 | Create Campaign | ![Create Campaign image](assets/readme-files/desktop-createcampaign.png) | ![Create Campaign image](assets/readme-files/mobile-createcampaign.png) |
-| Create Campaign edit | ![Create Campaign edit image](assets/readme-files/desktop-createcampaign-edit.png) | ![Create Campaign image](assets/readme-files/mobile-createcampaign-edit.png) |
-| Create Campaign delete | ![Create Campaign delete image](assets/readme-files/desktop-createcampaign-delete.png) | ![Create Campaign delete image](assets/readme-files/mobile-createcampaign-delete.png) |
 | Profile | ![profile image](assets/readme-files/desktop-profile.png) | ![Profile image](assets/readme-files/mobile-profile.png) |
 | Dashboard | ![Dashboard image](assets/readme-files/desktop-dashboard.png) | ![Dashboard image](assets/readme-files/mobile-dashboard.png) |
-| Sign Up |![Desktop Sign Up Page image](assets/readme_files/desktop_sign_up.png) | ![Mobile Sign Up Page image](assets/readme_files/mobile_sign_up.png) |
-| Sign In |![Desktop Sing In Page image](assets/readme_files/desktop_login.png) | ![](assets/readme_files/mobile_login.png) |
-| Sign Out |![Desktop Sign Out Page image](assets/readme_files/desktop_logout.png) | ![Mobile Sign Out Page image](assets/readme_files/mobile_logout.png) |
+| Sign Up |![Desktop Sign Up Page image](assets/readme-files/desktop-signup.png) | ![Mobile Sign Up Page image](assets/readme-files/mobile-signup.png) |
+| Sign In |![Desktop Sing In Page image](assets/readme-files/desktop-signin.png) | ![Mobile Sign In Page image](assets/readme-files/mobile-signin.png) |
 
 
 [Back to top ⇧](#dd-dungeon-party)
