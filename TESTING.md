@@ -4,7 +4,20 @@
 
 [Back to the Testing section in the README.md file](https://github.com/Quack842/p4-dndcampaign#testing)
 
-[View the live website here]()  
+[View the live website here]()
+
+# NOTE** 
+Unfortunatly, the website is not live on Heroku because the build kept failing.
+
+When deplaying to Heroku, I kept getting a 'etag' KeyError.
+The 4 different Tutors who tried to help me:
+1. Sean
+2. Oisin
+3. Martin
+4. Ed
+
+To see what we have tried to solve this error, click [here](#)
+
 
 ## Table of Contents
 
@@ -19,130 +32,31 @@
 
 
 ## Testing User Stories
-
-### 1. As a Site Admin I can create, read, update and delete questions and answers so that I can manage the site content
-
-* An admin site has been provided so that the Site Admin can manage question and replies.
-
-* Question and replies can be created, read, updated and deleted from the site.
-
-* Questions and replies main fields are being displayed for the Site Admin to identify them easily.
-
-* Questions and replies can be filtered and searched to narrow down a specific group.
-
-
-### 2. As a Site User I can register an account so that I can create and rate questions and replies
-
-* Account registration has been provided for Site User.
-
-* Registered Site Users are given the possibility to submit questions and replies.
-
-* Registered Site Users are able to edit and delete their own questions.
-
-* Registered Site Users are able to vote upvote and downvote questions and replies.
-
-
-### 3. As a Site User I can create new questions so that I can receive help from other users
-
-* An Ask Question page has been provided for registered Site Users.
-
-* A form is available in the Ask Question page for the Site Users to be able to register new questions. 
-
-* An Ask Question button is displayed to the registered Site Users at the top of the questions list to access the Ask Question page.
-
-
-### 4. As a Site User I can edit and delete my own questions so that I can manage the questions I created
-
-* Edit and Delete Question pages are provided for registered Site Users.
-
-* A form is available inside those pages for the Site Users to be able to edit or delete a specific question.
-
-* The Edit Question form is prepopulated with the current data for the user to be able to edit the content.
-
-* A Delete Question form is provided for Site Users to confirm the deletion. 
-
-* Edit and Delete button are displayed on those questions the user has created to access the respective page.
-
-
-### 5. As a Site User I can reply to questions so that I can help other users to find a solution
-
-* A Leave Reply page has been provided for registered Site Users.
-
-* A form is available in the Leave Reply page for the Site Users to be able to register new replies to the questions. 
-
-* A Leave Reply button is displayed to the registered Site Users under the Question content inside the Question Details page. This button is used to access the Leave Reply page.
-
-
-### 6. As a Site User I can edit and delete my own replies so that I can manage the replies I created
-
-* Edit and Delete Reply pages are provided for registered Site Users.
-
-* A form is available inside those pages for the Site Users to be able to edit or delete a specific reply.
-
-* The Edit Reply form is prepopulated with the current data for the user to be able to edit the content.
-
-* A Delete Reply form is provided for Site Users to confirm the deletion. 
-
-* Edit and Delete button are displayed on those replies the user has created to access the respective page.
-
-
-### 7. As a Site User I can upvote and downvote questions and answers so that I can give relevance to the content.
-
-* Upvote and downvote buttons are provided for registered Site Users next to each question and reply.
-
-* Registered Site Users can upvote, downvote or remove their votes using those buttons from the Home and Question Detail pages.
-
-
-### 8. As a Site User I can view a list of questions so that I can select one to read
-
-* The Home page is a Question List, displaying all existing question to all Site Users.
-
-* Questions are displayed in creation date/time order, showing the newest questions on top. 
-
-
-### 9. As a Site User I can search for specific questions so that I can easily find the information I am looking for
-
-* A Question Search field has been provided to all Site Users in the top of all pages.
-
-* This search field allow all Site Users to search questions using keyword(s).
-
-* A Search Results page with a list of questions matching the searched keyword(s) is provided.
-
-* The list gets paginated if the Search Results exceed 10 questions.
-
-
-### 10. As a Site User I can view a paginated list of questions so that I can easily select a question to view
-
-* The Question List displayed in the Home page is paginated every 10 questions.
-
-* Navigation buttons are provided on the bottom of each page to navigate easily between pages.
-
-
-### 11. As a Site User I can click on a question so that I can read the full question and the replies received
-
-* A Question Detail page is provided for all Site Users to review the full question content.
-
-* The question title in the Question List page is provided as a link so that Site Users can access the Question Detail page for each specific question.
-
-
-### 12. As a Site User I can view the replies a question received so that I can find a solution to the question
-
-* Question's replies are being listed inside the Question Detail page for each specific question under the question content.
-
- * Replies are being sorted by their rating so that Site Users can find the most relevant replies on top.
-
-
-### 13. As a Site User I can view the score on each question so that I can find the most helpful
-
-* The question's rating is being displayed for all Site Users next to each question.
-
-
-### 14. As a Site User I can view the score on each reply so that I can find the most helpful
-
-* The reply's rating is being displayed for all Site Users next to each reply.
-
-* Replies are ordered by this rating so Site Users can find the most relevant replies on top
-
+### 1. As a site admin I can create, update and Delete campaigns and venues.
+* An admin site has been provided so that the Site Admin can manage campaigns and venues.
+* Campaigns and venues can be created updated and deleted from the site
+* Campaigns and Venues fields are displayed for the Site Admin to identify them easily
+***
+### 2. As a Site User I can register an account so that I can create campaigns and book Venues
+* Account registration has been provided for Site User
+* Registered Site Users are given the possibility to create campaigns and book venues.
+* Registered Site Users are able to edit and delete their own campaigns and venues they booked.
+***
+### 3. As a Site User I can create multiple campaigns.
+* Create a campaign page are provided for Site Users.
+* A form is available inside that page to allow the user to create a new campaign.
+***
+### 4. As a Site User I can edit and delete my own campaigns so I can manage the campaigns I created
+* Edit and Delete Campaign pages are provided for registered Site User
+* A form is available inside those pages for the Site Users to be able to edit or delete a specific campaign
+* The Edit Campaign form is pre-populated with the current data for the user to be able to edit the content.
+* A Delete Campaign form is provided for Site Users to confirm the deletion
+* Edit and Delete button are displayed on the campaigns the user has created to access the respective page
+***
+### 5. As a Site Users I can view all the available venues at each region
+* A clickable image is available to for the Site User to select a region.
+* Information will show depending on the region the Site User clicks on
+***
 
 ## Code Validation
 
@@ -152,27 +66,20 @@ The [W3C Markup Validator](https://validator.w3.org/) service was used to valida
  
 W3C Markup Validator found the following errors concerning index.html.
 
-![index.html validation errors image](assets/testing_files/index_validation_errors.jpg)
+![index.html validation errors image](assets/testing-files/html-validator-error.png)
 
-The errors were solved by removing the aria-label attribute from the nav, as well as removing the invalid closing Div tag.
+The errors were solved by re-entering the p tag, as I don't a missing start p tag.
 
-![index.html validation](assets/testing_files/index_validation.jpg)
-
-
-
-W3C Markup Validator also found a great amount of errors in pages with user input. However, I found those errors to be coming from the Summernote editor. See example below:
-
-![Summernote HTML errors image](assets/testing_files/summernote_errors.jpg)
-
-
+![index.html validation]()
+***
 ### CSS
 
 [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) service was used to validate the CSS code of the project in order to ensure there were no syntax errors. 
 
-W3C CSS Validator found no errors or warnings on my CSS.
+Because My static file aren't showing with Cloudinary, I had to copy and paste the text into the validator with direct Input.
+There was not error.
 
-![CSS validation image](assets/testing_files/css_validation.png)
-
+![index.html validation](assets/testing-files/css-validator.png)
 
 ### Pyhton
 
