@@ -23,7 +23,6 @@ class Home(generic.TemplateView):
     template_name = "index.html"
 
 
-@loginrequired
 class BookvenueList(generic.ListView):
     """
     This view is used to display all booking in the browse booking page
@@ -34,7 +33,6 @@ class BookvenueList(generic.ListView):
 
 
 # To create a new Campaign
-@loginrequired
 class CreateCampaign(FormView):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
@@ -54,7 +52,6 @@ class CreateCampaign(FormView):
         return HttpResponse(template.render(context, request))
 
 
-@loginrequired
 class CampaignList(generic.ListView):
     model = Campaign
     queryset = Campaign.objects.order_by("-created_on")
@@ -84,7 +81,6 @@ class VenueList(generic.ListView):
     template_name = "venues.html"
 
 
-@loginrequired
 class Profile(generic.TemplateView):
     """ This will be the Profile Page """
     template_name = "account/profile.html"
@@ -144,7 +140,6 @@ def logout_request(request):
 
 
 # Delete Campaign
-@loginrequired
 class DeleteCampaign(View):
     def get(self, request, id):
         """ Get Campaign to be deleted and render a delete form """
@@ -177,7 +172,6 @@ class DeleteCampaign(View):
 
 
 # Edit Campaign
-@loginrequired
 class EditCampaign(View):
     """ View to allow user to edit a specific Campaign"""
 
@@ -241,7 +235,6 @@ class EditCampaign(View):
 
 
 # Delete Venue
-@loginrequired
 class DeleteVenue(View):
     def get(self, request, id):
         """ Get Venue to be deleted and render a delete form """
@@ -274,7 +267,6 @@ class DeleteVenue(View):
 
 
 # Edit Venue
-@loginrequired
 class EditVenue(View):
     """ View to allow user to edit a specific Venue"""
 
