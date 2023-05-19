@@ -33,13 +33,13 @@ class BookvenueList(generic.ListView):
 
 
 # To create a new Campaign
-@login_required
 class CreateCampaign(FormView):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
     success_url = '/dashboard'
 
+    @login_required
     def form_valid(self, form):
         if form.is_valid():
             campaign_name = form.cleaned_data.get('campaign_name')
@@ -65,6 +65,7 @@ class Venue(FormView):
     form_class = BookForm
     success_url = '/upcoming_campaigns'
 
+    @login_required
     def form_valid(self, form):
         if form.is_valid():
             form = form.save(commit=False)
@@ -141,7 +142,6 @@ def logout_request(request):
 
 
 # Delete Campaign
-@login_required
 class DeleteCampaign(View):
     def get(self, request, id):
         """ Get Campaign to be deleted and render a delete form """
@@ -174,10 +174,10 @@ class DeleteCampaign(View):
 
 
 # Edit Campaign
-@login_required
 class EditCampaign(View):
     """ View to allow user to edit a specific Campaign"""
 
+    @login_required
     def get(self, request, id):
         """ Get Campaign data and return a prefilled form """
 
@@ -246,7 +246,6 @@ class EditCampaign(View):
 
 
 # Delete Venue
-@login_required
 class DeleteVenue(View):
     def get(self, request, id):
         """ Get Venue to be deleted and render a delete form """
@@ -279,7 +278,6 @@ class DeleteVenue(View):
 
 
 # Edit Venue
-@login_required
 class EditVenue(View):
     """ View to allow user to edit a specific Venue"""
 
