@@ -39,10 +39,7 @@ class CreateCampaign(FormView):
     form_class = CreateCampaignForm
     success_url = '/dashboard'
 
-    @method_decorator(login_required)
-    def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
-
+    @login_required
     def form_valid(self, form):
         if form.is_valid():
             campaign_name = form.cleaned_data.get('campaign_name')
@@ -180,7 +177,6 @@ class DeleteCampaign(View):
 class EditCampaign(View):
     """ View to allow user to edit a specific Campaign"""
 
-    @login_required
     def get(self, request, id):
         """ Get Campaign data and return a prefilled form """
 
