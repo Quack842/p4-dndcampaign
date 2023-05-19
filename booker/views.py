@@ -39,15 +39,17 @@ class CreateCampaign(FormView):
     form_class = CreateCampaignForm
     success_url = '/dashboard'
 
-    @login_required
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
     def form_valid(self, form):
         if form.is_valid():
             campaign_name = form.cleaned_data.get('campaign_name')
             form = form.save(commit=False)
-            form.user = User.objects.get(id=self.request.user.id)
+            form.user = self.request.user
             form.save()
-            messages.success(self.request,
-                             f"{campaign_name} was successfully Registered!")
+            messages.success(self.request, f"{campaign_name} was successfully registered!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(context, request))
