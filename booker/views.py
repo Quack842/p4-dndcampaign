@@ -33,7 +33,7 @@ class BookvenueList(generic.ListView):
 
 
 # To create a new Campaign
-class CreateCampaign(FormView):
+class CreateCampaign(FormView, LoginRequiredMixin):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
@@ -59,7 +59,7 @@ class CampaignList(generic.ListView):
     template_name = "dashboard.html"
 
 
-class Venue(FormView):
+class Venue(FormView, LoginRequiredMixin):
     """ This will be the Venue Page """
     template_name = "venues.html"
     form_class = BookForm
@@ -142,7 +142,7 @@ def logout_request(request):
 
 
 # Delete Campaign
-class DeleteCampaign(View):
+class DeleteCampaign(View, LoginRequiredMixin):
     def get(self, request, id):
         """ Get Campaign to be deleted and render a delete form """
 
@@ -157,6 +157,7 @@ class DeleteCampaign(View):
             }
         )
 
+    @login_required
     def post(self, request, id):
         """ Delete existing Campaign """
 
@@ -174,7 +175,7 @@ class DeleteCampaign(View):
 
 
 # Edit Campaign
-class EditCampaign(View):
+class EditCampaign(View, LoginRequiredMixin):
     """ View to allow user to edit a specific Campaign"""
 
     def get(self, request, id):
@@ -205,6 +206,7 @@ class EditCampaign(View):
             }
         )
 
+    @login_required
     def post(self, request, id):
         """
         Update existing Campaign using the form data
@@ -245,7 +247,7 @@ class EditCampaign(View):
 
 
 # Delete Venue
-class DeleteVenue(View):
+class DeleteVenue(View, LoginRequiredMixin):
     def get(self, request, id):
         """ Get Venue to be deleted and render a delete form """
 
@@ -260,6 +262,7 @@ class DeleteVenue(View):
             }
         )
 
+    @login_required
     def post(self, request, id):
         """ Delete existing Venue """
 
@@ -277,7 +280,7 @@ class DeleteVenue(View):
 
 
 # Edit Venue
-class EditVenue(View):
+class EditVenue(View, LoginRequiredMixin):
     """ View to allow user to edit a specific Venue"""
 
     def get(self, request, id):
@@ -307,6 +310,7 @@ class EditVenue(View):
             }
         )
 
+    @login_required
     def post(self, request, id):
         """
         Update existing Venue using the form data
