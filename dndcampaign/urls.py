@@ -26,7 +26,7 @@ urlpatterns = [
     path('', views.Home.as_view(), name='home'),
     path('upcomingcampaigns/', views.BookvenueList.as_view(),
          name='upcoming_campaigns'),
-    path('createcampaign/', views.CreateCampaign.as_view(),
+    path('createcampaign/', login_required(views.CreateCampaign.as_view()),
          name='create_campaign'),
     path('dashboard/', views.CampaignList.as_view(), name='dashboard'),
     path('venues/', views.Venue.as_view(), name='venues'),
@@ -37,22 +37,22 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path(
         'delete_campaign/<int:id>/',
-        views.DeleteCampaign.as_view(),
+        login_required(views.DeleteCampaign.as_view()),
         name='delete_campaign'
     ),
     path(
         'edit_campaign/<int:id>/',
-        views.EditCampaign.as_view(),
+        login_required(views.EditCampaign.as_view()),
         name='edit_campaign'
     ),
     path(
         'delete_venue/<int:id>/',
-        views.DeleteVenue.as_view(),
+        login_required(views.DeleteVenue.as_view()),
         name='delete_venue'
     ),
     path(
         'edit_venue/<int:id>/',
-        views.EditVenue.as_view(),
+        login_required(views.EditVenue.as_view()),
         name='edit_venue'
     ),
 
