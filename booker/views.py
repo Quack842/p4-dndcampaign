@@ -179,6 +179,7 @@ class EditCampaign(View):
         """ Get Campaign data and return a prefilled form """
 
         queryset = Campaign.objects.all()
+
         campaign = get_object_or_404(queryset, id=id)
 
         data = {'campaign_name': campaign.campaign_name,
@@ -187,6 +188,11 @@ class EditCampaign(View):
                 'description': campaign.description,
                 }
         edit_form = CreateCampaignForm(initial=data)
+
+        if campaign.user != request.user:
+            # If the logged-in user is not the owner of the campaign,
+            # redirect them to a suitable page or display an error message
+            return HttpResponse("home")
 
         return render(
             request,
@@ -206,6 +212,8 @@ class EditCampaign(View):
         campaign = get_object_or_404(queryset, id=id)
 
         edit_form = CreateCampaignForm(instance=campaign, data=request.POST)
+        if campaign.user != request.user:
+            return HttpResponse("home")
 
         if edit_form.is_valid():
             campaign.campaign_name = edit_form.cleaned_data.get(
@@ -283,6 +291,11 @@ class EditVenue(View):
                 }
         edit_form = BookForm(initial=data)
 
+        if bookvenue.user != request.user:
+            # If the logged-in user is not the owner of the venue,
+            # redirect them to a suitable page or display an error message
+            return HttpResponse("home")
+
         return render(
             request,
             'edit_venue.html',
@@ -301,6 +314,9 @@ class EditVenue(View):
         bookvenue = get_object_or_404(queryset, id=id)
 
         edit_form = BookForm(instance=campaign, data=request.POST)
+
+        if bookvenue.user != request.user:
+            return HttpResponse("home")
 
         if edit_form.is_valid():
             bookvenue.campaigns = edit_form.cleaned_data.get(
