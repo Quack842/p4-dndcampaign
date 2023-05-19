@@ -47,9 +47,10 @@ class CreateCampaign(FormView):
         if form.is_valid():
             campaign_name = form.cleaned_data.get('campaign_name')
             form = form.save(commit=False)
-            form.user = self.request.user
+            form.user = User.objects.get(id=self.request.user.id)
             form.save()
-            messages.success(self.request, f"{campaign_name} was successfully registered!")
+            messages.success(self.request,
+                             f"{campaign_name} was successfully Registered!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(context, request))
