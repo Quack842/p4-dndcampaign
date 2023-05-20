@@ -88,9 +88,9 @@ class BookVenue(models.Model):
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="bookvenue")
     campaigns = models.CharField(
-                choices=Campaign.objects.values_list
-                ('campaign_name', 'campaign_name'), max_length=150,
-                default=None, unique=True)
+        choices=Campaign.objects.values_list
+        ('campaign_name', 'campaign_name'), max_length=150,
+        default=None, unique=True)
     venue = models.CharField(max_length=50, choices=REGION_EUROPE)
     booking_date = models.DateField(auto_now=False)
     booking_comments = models.TextField(max_length=200, blank=True)

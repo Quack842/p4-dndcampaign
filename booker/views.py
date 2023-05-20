@@ -68,13 +68,20 @@ class Venue(FormView, LoginRequiredMixin):
     form_class = BookForm
     success_url = '/upcomingcampaigns/'
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Get the latest campaign
+        latest_campaign = Campaign.objects.order_by('-created_on').first()
+        # Set the latest campaign as the initial value for the campaigns field
+        form.fields['campaigns'].initial = latest_campaign
+        return form
+
     def form_valid(self, form):
         if form.is_valid():
             form = form.save(commit=False)
             form.user = User.objects.get(id=self.request.user.id)
             form.save()
-            messages.success(self.request,
-                             "Successfully Registered to a Venue!")
+            messages.success(self.request, "Successfully Registered to a Venue!")
             return super().form_valid(form)
 
         return HttpResponse(template.render(request, context))

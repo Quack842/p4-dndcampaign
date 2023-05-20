@@ -270,11 +270,10 @@ The testing documentation can be found [here](https://github.com/Quack842/p4-dnd
 ### Bugs
     This is My second upload, the first one had a bug where any user (That was not logged in) can access the create_campaign page, I fixed this by adding the login_required, before the Urls links in the urls.py file. I also added a 404 page.
 
-    While I was add it, there was a bug that when a user created a campaign, it would not load in the create venue form, for a while. A user had to log out and in to see it again. I added the following Code to make sure that the newest campaigns created was there.
-
 ### Existing Bugs
     Currently, the user can see all the campaigns that was created by all the other users. This is a known bug and will be worked on in the future.
 
+    There is also a bug where after a user created a campaign, it doesn't show in the Venue page when you want to book a venue right away. You can see that the campaign is logged to the databse on the back end, but the user have to hard-refresh the page or logg out and in again.
 
 
 [Back to top ⇧](#dd-dungeon-party)
