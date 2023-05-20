@@ -10,7 +10,7 @@ from django.shortcuts import render
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin', admin.site.urls),
     path('', views.Home.as_view(), name='home'),
     path('upcomingcampaigns/', views.BookvenueList.as_view(),
          name='upcoming_campaigns'),
