@@ -18,6 +18,10 @@ from django.views.generic.edit import FormView, DeleteView
 from django.contrib.auth.models import User
 
 
+def handler404(request, invalid_path):
+    return render(request, '404.html', status=404)
+
+
 class Home(generic.TemplateView):
     """ This will be the Home/Landing Page """
     template_name = "index.html"
@@ -37,9 +41,8 @@ class CreateCampaign(FormView, LoginRequiredMixin):
     """ This will be the Create Campaigns Page """
     template_name = "create_campaign.html"
     form_class = CreateCampaignForm
-    success_url = '/dashboard'
+    success_url = '/dashboard/'
 
-    @login_required
     def form_valid(self, form):
         if form.is_valid():
             campaign_name = form.cleaned_data.get('campaign_name')
@@ -63,9 +66,8 @@ class Venue(FormView, LoginRequiredMixin):
     """ This will be the Venue Page """
     template_name = "venues.html"
     form_class = BookForm
-    success_url = '/upcoming_campaigns'
+    success_url = '/upcomingcampaigns/'
 
-    @login_required
     def form_valid(self, form):
         if form.is_valid():
             form = form.save(commit=False)
@@ -157,7 +159,6 @@ class DeleteCampaign(View, LoginRequiredMixin):
             }
         )
 
-    @login_required
     def post(self, request, id):
         """ Delete existing Campaign """
 
@@ -206,7 +207,6 @@ class EditCampaign(View, LoginRequiredMixin):
             }
         )
 
-    @login_required
     def post(self, request, id):
         """
         Update existing Campaign using the form data
@@ -262,7 +262,6 @@ class DeleteVenue(View, LoginRequiredMixin):
             }
         )
 
-    @login_required
     def post(self, request, id):
         """ Delete existing Venue """
 
@@ -310,7 +309,6 @@ class EditVenue(View, LoginRequiredMixin):
             }
         )
 
-    @login_required
     def post(self, request, id):
         """
         Update existing Venue using the form data

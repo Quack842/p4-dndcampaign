@@ -31,6 +31,7 @@ If the user have created an account, they will have access to creating a campaig
         * [Database Management](#database-management)
         * [Tools and Programs](#tools-and-programs)
     7. [Testing](#testing)
+        - [Bugs]()
     8. [Deployment](#deployment)
     9. [Finished Product](#finished-product)
     10. [Credits](#credits)
@@ -265,6 +266,15 @@ The main font being used in the site is Mitr, with sans-serif as a fallback in c
 ## Testing
 
 The testing documentation can be found [here](https://github.com/Quack842/p4-dndcampaign/blob/main/TESTING.md).
+
+### Bugs
+    This is My second upload, the first one had a bug where any user (That was not logged in) can access the create_campaign page, I fixed this by adding the login_required, before the Urls links in the urls.py file. I also added a 404 page.
+
+    While I was add it, there was a bug that when a user created a campaign, it would not load in the create venue form, for a while. A user had to log out and in to see it again. I added the following Code to make sure that the newest campaigns created was there.
+
+### Existing Bugs
+    Currently, the user can see all the campaigns that was created by all the other users. This is a known bug and will be worked on in the future.
+
 
 
 [Back to top ⇧](#dd-dungeon-party)

@@ -32,8 +32,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["p4-dndcampaign.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["p4-dndcampaign.herokuapp.com", "localhost", "8000-quack842-p4dndcampaign-06nevxat71m.ws-eu97.gitpod.io"]
 
+ERROR_PAGE_TEMPLATE = '404.html'
 
 # Summernote Customize
 
